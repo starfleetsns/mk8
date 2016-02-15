@@ -15,8 +15,8 @@ def squadreid(request,idsquadra):
 
 def classifica(request):
     squadre = Squadra.objects.order_by('-punteggio').all()
-    lista = [ {'pos':i+1 , 's':squadre[i] } for i in range(len(squadre))]
-    return render(request,'torneo/classifica.html',{'lista':lista})
+#    lista = [ {'pos':i+1 , 's':squadre[i] } for i in range(len(squadre))]
+    return render(request,'torneo/classifica.html',{'lista':squadre})
 
 def squadre(request):
     lista = Squadra.objects.order_by('nome').all()
