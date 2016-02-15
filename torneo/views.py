@@ -35,16 +35,17 @@ def index(request):
         'npartite':  Partita.objects.count(),
         'npartitedone' : Partita.objects.filter(done=True).count(),
         }
-    try:
-        ref = request.META['HTTP_REFERER']
-    except:
+    if 'splash' not in request.session:
+        request.session['splash'] = False
         context['animazione'] = True
     else:
-        context['animazione'] = not re.search("^https?://[a-z0-9\.\:]+/torneo",ref,re.IGNORECASE)
+        context['animazione'] = False
+
     return render(request,'torneo/index.html',context)
 
 def regolamento(request):
     return render(request,'torneo/regolamento.html')
+
 
     
 
