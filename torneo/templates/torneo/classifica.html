@@ -18,7 +18,7 @@
     {% for squadra in lista %}
     <tr>
       <td>{{ squadra.pos }}</td>
-      <td><a href="{% url 'squadreid' squadra.s.id %}">
+      <td><a href="{% url 'torneo:squadreid' squadra.s.id %}">
 	  {{ squadra.s.nome }}</a></td>
       <td>{{ squadra.s.giocatore1 }}</td>
       <td>{{ squadra.s.giocatore2 }}</td>

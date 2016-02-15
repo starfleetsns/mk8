@@ -60,9 +60,9 @@
     {% for partita in partite %}
     <tr {% if partita.done %}{% else %}class=info{% endif %}>
       <td>{{ partita.data }}</td>
-      <td><a href="{% url 'squadreid' partita.squadra1.id %}">
+      <td><a href="{% url 'torneo:squadreid' partita.squadra1.id %}">
 	  {{ partita.squadra1.nome }}</a></td>
-      <td><a href="{% url 'squadreid' partita.squadra2.id %}">
+      <td><a href="{% url 'torneo:squadreid' partita.squadra2.id %}">
 	  {{ partita.squadra2.nome }}</a></td>
       <td>
 	{% if partita.done %}{{ partita.punteggio1 }} - {{ partita.punteggio2 }}

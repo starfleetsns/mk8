@@ -27,7 +27,7 @@ def calendario(request):
     return render(request,'torneo/calendario.html',{'lista':lista})
 
 def default(request):
-    return redirect(regolamento)
+    return redirect('torneo:regolamento')
 
 def regolamento(request):
     try:
@@ -35,7 +35,7 @@ def regolamento(request):
     except:
         animazione = True
     else:
-        animazione = not re.search("^https?://[a-z0-9\.]+/torneo",ref,re.IGNORECASE)
+        animazione = not re.search("^https?://[a-z0-9\.\:]+/torneo",ref,re.IGNORECASE)
     return render(request,'torneo/regolamento.html',{'animazione':animazione})
 
     

@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^torneo/',include('torneo.urls')),
+    url(r'^torneo/',include('torneo.urls', namespace='torneo')),
 #    url(r'^$','django.contrib.staticfiles.views.serve', kwargs= {'path':'torneo/index.html'})
     url(r'^$',RedirectView.as_view(url='torneo/regolamento'))
 )
