@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^torneo/',include('torneo.urls', namespace='torneo')),
 #    url(r'^$','django.contrib.staticfiles.views.serve', kwargs= {'path':'torneo/index.html'})
-    url(r'^$',RedirectView.as_view(url='torneo/regolamento'))
+    url(r'^$',RedirectView.as_view(url='torneo/',permanent=False))
 )
 
 

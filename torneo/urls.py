@@ -8,7 +8,7 @@ urlpatterns = patterns('',
                        url(r'^calendario/$',views.calendario, name='calendario'),
                        url(r'^regolamento/$',views.regolamento, name='regolamento'),
                        url(r'^squadre/$',views.squadre, name='squadre'),
-                       url(r'^$',views.default, name='default')
+                       url(r'^$',views.index, name='index')
 #                           # ex: /polls/
 #                               url(r'^$', views.index, name='index'),
 #                           # ex: /polls/5/

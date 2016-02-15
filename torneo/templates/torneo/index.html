@@ -1,0 +1,74 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Torneo MK8{% endblock %}
+{% block indexli %}class="active"{% endblock %}
+
+{% block content %}
+
+<div id="index">
+  <p>Benvenuti nel portare del torneo di Mario Kart 8 che si svolgerà
+    al Collegio Timpano</p>
+  <h3>Pagine</h3>
+  <p>Le pagine disponibili sono:
+    <ul>
+      <li><a href="{% url 'torneo:squadre' %}">Lista delle squadre</a></li>
+      <li><a href="{% url 'torneo:classifica' %}">Classifica attuale</a></li>
+      <li><a href="{% url 'torneo:calendario' %}">Calendario degli incontri</a></li>
+      <li><a href="{% url 'torneo:regolamento' %}">Regolamento del
+	  torneo</a></li>
+    </ul>
+  </p>
+  <h3>Iscrizioni</h3>
+  <p>Le iscrizioni sono aperte fino al 21 febbraio 2016, per partecipare contatta
+    <ul>
+      <li>Piero Lafiosca, camera 414,
+	<a href="mailto:piero.lafiosca@sns.it">piero.lafiosca@sns.it</a></li>
+      <li>Gianluca Tasinato, camera 503,
+	<a href="mailto:gianluca.tasinato@sns.it">gianluca.tasinato@sns.it</a></li>
+    </ul>
+  </p>
+  {% if nsquadre or npartite or npartitedone %}
+  <h3>Statistiche</h3>
+  <p>
+    <ul>
+    {% if nsquadre %}
+    <li>Sono registrate <strong>{{ nsquadre }}</strong> squadre</li>
+    {% endif %}
+    {% if npartite %}
+    <li>Sono state programmate <strong>{{ npartite }}</strong> partite</li>
+    {% endif %}
+    {% if npartitedone %}
+    <li>Sono state già giocate <strong>{{ npartitedone }}</strong> partite</li>
+    {% endif %}
+  </p>
+  {% endif %}
+
+</div>
+
+<div id="splashscreen"></div>
+
+{% if animazione %}
+<script type="text/javascript">
+  // Lista delle possibili immagini per lo splashscreen
+  var screenz = ['luigit.png', 'mariot.jpg', 'verdet.jpg'];
+  // Scegliamo uno splash screen a scelta
+  var splash = screenz[Math.floor(Math.random()*screenz.length)];
+  // Leviamo tutti i nav
+  $('nav,#index').hide();
+  // Lo mostriamo e, quando ha caricato mostriamo l'animazione
+  $('#splashscreen').append("<img src='{% static 'torneo/' %}" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500, function () { $('nav,#index').fadeIn(800) } );
+
+</script>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

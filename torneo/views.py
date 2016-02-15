@@ -26,17 +26,25 @@ def calendario(request):
     lista = Partita.objects.order_by('data')
     return render(request,'torneo/calendario.html',{'lista':lista})
 
-def default(request):
-    return redirect('torneo:regolamento')
+#def default(request):
+#    return redirect('torneo:regolamento')
 
-def regolamento(request):
+def index(request):
+    context = {
+        'nsquadre': Squadra.objects.count(),
+        'npartite':  Partita.objects.count(),
+        'npartitedone' : Partita.objects.filter(done=True).count(),
+        }
     try:
         ref = request.META['HTTP_REFERER']
     except:
-        animazione = True
+        context['animazione'] = True
     else:
-        animazione = not re.search("^https?://[a-z0-9\.\:]+/torneo",ref,re.IGNORECASE)
-    return render(request,'torneo/regolamento.html',{'animazione':animazione})
+        context['animazione'] = not re.search("^https?://[a-z0-9\.\:]+/torneo",ref,re.IGNORECASE)
+    return render(request,'torneo/index.html',context)
+
+def regolamento(request):
+    return render(request,'torneo/regolamento.html')
 
     
 
