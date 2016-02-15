@@ -9,6 +9,7 @@ class Squadra(models.Model):
     giocatore1 = models.CharField(max_length=200)
     giocatore2 = models.CharField(max_length=200)
     punteggio = models.IntegerField(default=0)
+    immagine = models.ImageField(upload_to='torneo/squadra',default='torneo/squadra/default.png')
 
     def __str__(self):
         return self.nome + ' ('+ self.giocatore1 + ' - '+self.giocatore2 +')'

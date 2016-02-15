@@ -12,6 +12,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SERVE_MEDIA = False
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

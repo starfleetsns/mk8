@@ -6,45 +6,52 @@
 {% block content %}
 {% if squadra %}
 <div class="squadracont">
-  <div class="row boldcell">
-    <div class="col-md-12"><h1>{{ squadra.nome }}</h1></div>
-  </div>
   <div class="row">
-    <div class="col-md-4 mycol">
-      <div class="row">
-	<div class="boldcell">Giocatore 1</div>
+    <div class="col-md-10">
+      <div class="row boldcell">
+	<div class="col-md-12"><h1>{{ squadra.nome }}</h1></div>
       </div>
       <div class="row">
-	<div>{{ squadra.giocatore1 }}</div>
+	<div class="col-md-4 mycol">
+	  <div class="row">
+	    <div class="boldcell">Giocatore 1</div>
+	  </div>
+	  <div class="row">
+	    <div>{{ squadra.giocatore1 }}</div>
+	  </div>
+	</div>
+	<div class="col-md-1">
+	  <div class="row">
+	  </div>
+	  <div class="row">
+	  </div>
+	</div>
+	<div class="col-md-2 mycol">
+	  <div class="row">
+	    <div class="boldcell">Punteggio</div>
+	  </div>
+	  <div class="row">
+	    <div>{{ squadra.punteggio }}</div>
+	  </div>
+	</div>
+	<div class="col-md-1">
+	  <div class="row">
+	  </div>
+	  <div class="row">
+	  </div>
+	</div>
+	<div class="col-md-4 mycol">
+	  <div class="row">
+	    <div class="boldcell">Giocatore 2</div>
+	  </div>
+	  <div class="row">
+	    <div>{{ squadra.giocatore2 }}</div>
+	  </div>
+	</div>
       </div>
     </div>
-    <div class="col-md-1">
-      <div class="row">
-      </div>
-      <div class="row">
-      </div>
-    </div>
-    <div class="col-md-2 mycol">
-      <div class="row">
-	<div class="boldcell">Punteggio</div>
-      </div>
-      <div class="row">
-	<div>{{ squadra.punteggio }}</div>
-      </div>
-    </div>
-    <div class="col-md-1">
-      <div class="row">
-      </div>
-      <div class="row">
-      </div>
-    </div>
-    <div class="col-md-4 mycol">
-      <div class="row">
-	<div class="boldcell">Giocatore 2</div>
-      </div>
-      <div class="row">
-	<div>{{ squadra.giocatore2 }}</div>
-      </div>
+    <div class="col-md-2">
+      <img src="{{ squadra.immagine.url }}" width="150">
     </div>
   </div>
 </div>
