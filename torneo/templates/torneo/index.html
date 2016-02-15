@@ -46,8 +46,6 @@
 
 </div>
 
-<div id="splashscreen"></div>
-
 {% if animazione %}
 <script type="text/javascript">
   // Lista delle possibili immagini per lo splashscreen
@@ -56,6 +54,8 @@
   var splash = screenz[Math.floor(Math.random()*screenz.length)];
   // Leviamo tutti i nav
   $('nav,#index').hide();
+  // mettiamo lo splashsreen
+  $('#splashscreen').show();
   // Lo mostriamo e, quando ha caricato mostriamo l'animazione
   $('#splashscreen').append("<img src='{% static 'torneo/' %}" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500, function () { $('nav,#index').fadeIn(800) } );
 

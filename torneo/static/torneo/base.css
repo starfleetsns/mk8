@@ -45,9 +45,8 @@
       bottom: 0;
       height: 100%;
       width: 100%;
-      display: inline-block;
+      display: none;
       overflow: hidden;
-//      background-color:white;
       }
       
       #splashscreen img {
