@@ -1,4 +1,5 @@
 {% extends "torneo/base.html" %}
+{% load staticfiles %}
 
 {% block title %}Regolamento{% endblock %}
 
@@ -47,7 +48,7 @@
   // Leviamo tutti i nav
   $('nav,#regolamento').hide();
   // Lo mostriamo e, quando ha caricato mostriamo l'animazione
-  $('#splashscreen').append("<img src='/static/mk8/" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500, function () { $('nav,#regolamento').fadeIn(800) } );
+  $('#splashscreen').append("<img src='{% static 'torneo/' %}" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500, function () { $('nav,#regolamento').fadeIn(800) } );
 
 </script>
 {% endif %}

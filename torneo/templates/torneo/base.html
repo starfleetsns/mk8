@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 
 <html>
@@ -7,65 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <style type="text/CSS">
-      body {
-      padding-top: 50px;
-      }
-      .main-template {
-      padding: 40px 15px;
-      font-size: 18px;
-      }
-
-      .row {
-      margin-bottom: 0px;
-      }
-      .mycell {
-      background-color: #eee;
-      border: 1px solid #ddd;
-      text-align: center;
-      }
-      
-      .boldcell {
-      font-weight: 700;
-      }
-
-      .squadracont {
-      background-color: #eee;
-      text-align: center;
-      padding: 15px;
-      border-radius: 8px;
-      }
-      
-      .mycol {
-      margin-top:10px;
-      }
-      
-      .squadracont h1 {
-      margin-top: 0px;
-      }
-      
-      .squadracont .row {
-      margin-bottom: 5px;
-      }
-
-      #splashscreen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 100%;
-      width: 100%;
-      display: inline-block;
-      overflow: hidden;
-//      background-color:white;
-      }
-      
-      #splashscreen img {
-      width: inherit;
-      height: inherit;
-      }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'torneo/base.css' %}" />
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
