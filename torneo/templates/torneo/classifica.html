@@ -1,0 +1,33 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}Classifica{% endblock %}
+
+{% block content %}
+{% if lista %}
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome squadra</th>
+      <th>Mamma</th>
+      <th>Babbo</th>
+      <th>Punti</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for squadra in lista %}
+    <tr>
+      <td>{{ squadra.pos }}</td>
+      <td><a href="{% url 'squadreid' squadra.s.id %}">
+	  {{ squadra.s.nome }}</a></td>
+      <td>{{ squadra.s.giocatore1 }}</td>
+      <td>{{ squadra.s.giocatore2 }}</td>
+      <td>{{ squadra.s.punteggio }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+Non gioca nessuno!
+{% endif %}
+{% endblock %}

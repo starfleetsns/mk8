@@ -1,0 +1,31 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}Squadre{% endblock %}
+
+{% block content %}
+{% if lista %}
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Nome squadra</th>
+      <th>Mamma</th>
+      <th>Babbo</th>
+      <th>Punti</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for squadra in lista %}
+    <tr>
+      <td><a href="{% url 'squadreid' squadra.id %}">
+	  {{ squadra.nome }}</a></td>
+      <td>{{ squadra.giocatore1 }}</td>
+      <td>{{ squadra.giocatore2 }}</td>
+      <td>{{ squadra.punteggio }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+Non gioca nessuno!
+{% endif %}
+{% endblock %}

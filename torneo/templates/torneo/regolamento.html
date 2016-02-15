@@ -1,0 +1,64 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}Regolamento{% endblock %}
+
+{% block content %}
+
+<div id="regolamento">
+  <h3>Scopo della manifestazione</h3>
+  <p>Scopo di questo torneo è passare dei divertenti e sereni momenti in
+    compagnia nel magnifico contesto dell'Almo Collegio D. Timpano. La
+    manifestazione è di carattere non competitivo e non è valida per le
+    qualificazioni di alcun altro torneo.</p>
+  
+  <h3>Modalità di gara</h3>
+  <p>Le coppie si sfideranno tra di loro in modo che ogni coppia faccia
+    circa una sfida a settimana in un unico girone. Alla fine le prime 8
+    squadre si affronteranno in un torneo ad eliminazione diretta dal
+    quale verrà scelto il vincitore.</p>
+  
+  <p>Le modalità di gara sono:
+    <ul>
+      <li>8 corse</li>
+      <li>Categoria 150cc</li>
+      <li>Tutti i veicoli</li>
+      <li>Oggetti Normali</li>
+      <li>Percorsi casuali</li>
+    </ul>
+  </p>
+  
+  <h3>Date importanti</h3>
+  <ul>
+    <li>Termine per le iscrizioni: 21 Febbraio 2016</li>
+    <li>Inizio campionato: ASAP</li>
+    <li>Fine campionato: alle calende greche</li>
+  </ul>
+  
+</div>
+
+<div id="splashscreen"></div>
+
+{% if animazione %}
+<script type="text/javascript">
+  // Lista delle possibili immagini per lo splashscreen
+  var screenz = ['luigit.png', 'mariot.jpg', 'verdet.jpg'];
+  // Scegliamo uno splash screen a scelta
+  var splash = screenz[Math.floor(Math.random()*screenz.length)];
+  // Leviamo tutti i nav
+  $('nav,#regolamento').hide();
+  // Lo mostriamo e, quando ha caricato mostriamo l'animazione
+  $('#splashscreen').append("<img src='/static/mk8/" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500, function () { $('nav,#regolamento').fadeIn(800) } );
+
+</script>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

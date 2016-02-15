@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title>Mario Kart 8 Championship</title>
+		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body>
+		<!-- Chi ce lo fa fare di metterli in un file a parte? -->
+		<style type="text/CSS">
+		#splashscreen {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    bottom: 0;
+		    height: 100%;
+		    width: 100%;
+		    display: inline-block;
+		    overflow: hidden;
+		    background-color:white;
+		}
+
+		#splashscreen img {
+			width: inherit;
+			height: inherit;
+		}
+
+		a { text-decoration: none; }
+		a { color: blue; font-weight: 600; }
+		a:hover { color: orange; font-weight: 700; }
+
+		body {
+		}
+		
+		#bando {
+			width: 40%;
+			margin: auto;
+			text-align: justify;
+		}
+		</style>
+
+		<!-- Splashscreen alla partenza, con contenuto random -->
+		<div id="splashscreen"></div>
+
+<!--		<div id="bando">
+		<h1>Torneo Mario Kart 8 Timpano</h1>
+		<p>Iscriviti anche tu al torneo di Mario Kart 8. &Egrave; previsto che si giochi a coppie, quindi trova un compagno assieme a cui gareggiare e comunicalo ad una tra le seguenti persone:
+		<ul>
+			<li>Gianluca Tasinato, Camera 503 Timpano</li>
+			<li>Piero Lafiosca, Camera 412 Timpano</li>
+		</ul></p>
+		<br/><br/>
+		<h2>Modalità di Svolgimento</h2>
+		<p>Le coppie si sfideranno tra di loro in modo che ogni coppia faccia circa una o due sfide a settimana (in modo che la partecipazione non risulti impegnativa). Le modalità di gara prevedono
+		<ul>
+			<li>8 corse</li>
+			<li>Categoria 150cc - Tutti i veicoli</li>
+			<li>Oggetti Normali</li>
+		</ul></p>
+		<br/><br/>
+		<h2>Date Importanti</h2>
+		<p>
+		<ul>
+			<li>Scadenza per l'iscrizione: _____</li>
+			<li>Inizio Campionato: ____</li>
+			<li>Fine (attesa) del Campionato: ____</li>
+		</ul>
+		Ti raccomandiamo di partecipare: più si è più ci si diverte! <br/>
+		Se vuoi controllare chi si è già iscritto e/o vedere le gare programmate <a href="torneo">clicca qui</a>
+		</p>
+		</div>
+-->
+
+		<script type="text/javascript">
+			// Lista delle possibili immagini per lo splashscreen
+			var screenz = ['luigit.png', 'mariot.jpg', 'verdet.jpg'];
+			// Scegliamo uno splash screen a scelta
+			var splash = screenz[Math.floor(Math.random()*screenz.length)];
+			// Lo mostriamo e, quando ha caricato mostriamo l'animazione
+			$('#splashscreen').append("<img src='/static/mk8/" + splash + "'/>").fadeIn(500).delay(2500).fadeOut(500);
+		</script>
+	</body>
+</html>
