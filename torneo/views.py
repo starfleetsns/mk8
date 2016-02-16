@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from torneo.models import Squadra,Partita
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.urlresolvers import reverse
 
 from django.core.exceptions import PermissionDenied
 
@@ -71,7 +72,6 @@ class SquadreNuova(CreateView):
 class SquadreModifica(UpdateView):
     model = Squadra
     fields = ['giocatore1','giocatore2','immagine','owner']
-    success_url = '/torneo/squadre/'
     
     # def get_queryset(self):
     #     base_qs = super(SquadreModifica, self).get_queryset()
@@ -96,6 +96,9 @@ class SquadreModifica(UpdateView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(SquadreModifica, self).dispatch(*args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('torneo:squadreid',kwargs={'idsquadra':self.get_object().id})
 
 class SquadreLista(ListView):
     model = Squadra
