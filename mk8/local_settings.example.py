@@ -24,5 +24,10 @@ DATABASES = {
     }
 }
 
-
+from django_auth_ldap.config import LDAPSearch
+import ldap
+AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com"
+AUTH_LDAP_BIND_DN = "CN=user,DC=example,DC=com"
+AUTH_LDAP_BIND_PASSWORD = "password"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("DC=example,DC=com", ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
 

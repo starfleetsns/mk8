@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-10">
       <div class="row boldcell">
-	<div class="col-md-12"><h1>{{ squadra.nome }}</h1></div>
+	<div class="col-md-12"><h1>{{ squadra.nome }}{% if squadra.owner == user or user.is_superuser %} <a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>{% endif %}</h1></div>
       </div>
       <div class="row">
 	<div class="col-md-4 mycol">

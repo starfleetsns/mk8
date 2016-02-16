@@ -1,13 +1,23 @@
 from django.conf.urls import patterns, url
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from torneo.models import Squadra
 
 from torneo import views
 
 urlpatterns = patterns('',
                        url(r'^classifica/$',views.classifica, name='classifica'),
-                       url(r'^squadre/(?P<idsquadra>\d+)/$',views.squadreid, name='squadreid'),
                        url(r'^calendario/$',views.calendario, name='calendario'),
                        url(r'^regolamento/$',views.regolamento, name='regolamento'),
-                       url(r'^squadre/$',views.squadre, name='squadre'),
+#                       url(r'^squadre/$',ListView.as_view(model=Squadra,),name='squadre'),
+                       url(r'^squadre/$',views.SquadreLista.as_view(),name='squadre'),
+                       url(r'^squadre/mie/$',views.SquadreLista.as_view(mie=True),name='squadremie'),
+#                       url(r'^squadre/$',views.squadre, name='squadre'),
+                       url(r'^squadre/(?P<idsquadra>\d+)/$',views.squadreid, name='squadreid'),
+                       url(r'^squadre/(?P<pk>\d+)/modifica/$',views.SquadreModifica.as_view(), name='squadremodifica'),
+                       url(r'^squadre/nuova/$',login_required(views.SquadreNuova.as_view()), name='squadrenuova'),
+                       url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+                       url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
                        url(r'^$',views.index, name='index')
 #                           # ex: /polls/
 #                               url(r'^$', views.index, name='index'),

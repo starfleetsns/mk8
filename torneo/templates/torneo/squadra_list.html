@@ -1,0 +1,34 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}Squadre{% endblock %}
+{% block squadreli %}class="active"{% endblock %}
+
+{% block content %}
+{% if object_list %}
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Nome squadra</th>
+      <th>Mamma</th>
+      <th>Babbo</th>
+      <th>Punti</th>
+      {% if user.is_authorized %}<th></th>{% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for squadra in object_list %}
+    <tr>
+      <td><a href="{% url 'torneo:squadreid' squadra.id %}">
+	  {{ squadra.nome }}</a></td>
+      <td>{{ squadra.giocatore1 }}</td>
+      <td>{{ squadra.giocatore2 }}</td>
+      <td>{{ squadra.punteggio }}</td>
+      <td>{% if squadra.owner == user or user.is_superuser %}<a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span>{% endif %}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+Non ci sono squadre da visualizzare.
+{% endif %}
+{% endblock %}

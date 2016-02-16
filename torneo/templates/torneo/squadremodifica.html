@@ -1,0 +1,22 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Torneo MK8{% endblock %}
+{% block indexli %}class="active"{% endblock %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Update" />
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
