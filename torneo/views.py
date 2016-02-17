@@ -71,7 +71,7 @@ class SquadreNuova(CreateView):
 
 class SquadreModifica(UpdateView):
     model = Squadra
-    fields = ['giocatore1','giocatore2','immagine','owner']
+    fields = ['giocatore1','giocatore2','immagine']
     
     def get_object(self):
         squadra = super(SquadreModifica, self).get_object()
