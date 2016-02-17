@@ -12,7 +12,8 @@ class Squadra(models.Model):
     punteggio = models.IntegerField(default=0)
     immagine = models.ImageField(upload_to='torneo/squadra',default='torneo/squadra/default.png')
     owner = models.ForeignKey(User,related_name="squadre",blank=True,default=None,null=True)
-
+    confermata = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.nome + ' ('+ self.giocatore1 + ' - '+self.giocatore2 +')'
 

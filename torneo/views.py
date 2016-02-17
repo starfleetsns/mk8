@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404
-from django.views.generic.edit import CreateView,UpdateView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic import ListView
 from torneo.models import Squadra,Partita
 from django.contrib.auth.decorators import login_required
@@ -19,7 +19,7 @@ def squadreid(request,idsquadra):
     return render(request,'torneo/squadreid.html',{'squadra':squadra,'partite':partite})
 
 def classifica(request):
-    squadre = Squadra.objects.order_by('-punteggio').all()
+    squadre = Squadra.objects.filter(confermata=True).order_by('-punteggio').all()
 #    lista = [ {'pos':i+1 , 's':squadre[i] } for i in range(len(squadre))]
     return render(request,'torneo/classifica.html',{'lista':squadre})
 
@@ -73,16 +73,6 @@ class SquadreModifica(UpdateView):
     model = Squadra
     fields = ['giocatore1','giocatore2','immagine','owner']
     
-    # def get_queryset(self):
-    #     base_qs = super(SquadreModifica, self).get_queryset()
-    #     if self.request.user.is_superuser or self.request.user.has_perm('torneo.change_squadra'):
-    #         return base_qs
-    #     else:
-    #         if base_qs is None:
-    #             return base_qs
-    #         else:
-    #             return base_qs.filter(owner=self.request.user)
-
     def get_object(self):
         squadra = super(SquadreModifica, self).get_object()
         if self.request.user.is_superuser or self.request.user.has_perm('torneo.change_squadra'):
@@ -100,15 +90,37 @@ class SquadreModifica(UpdateView):
     def get_success_url(self):
         return reverse('torneo:squadreid',kwargs={'idsquadra':self.get_object().id})
 
+class SquadreCancella(DeleteView):
+    model = Squadra
+    
+    def get_object(self):
+        squadra = super(SquadreCancella, self).get_object()
+        if self.request.user.is_superuser or self.request.user.has_perm('torneo.delete_squadra'):
+            return squadra
+        else:
+            raise PermissionDenied
+#            if squadra.owner == self.request.user:
+#                return squadra
+#            else:
+#                raise PermissionDenied
+            
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SquadreCancella, self).dispatch(*args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('torneo:squadre')
+
 class SquadreLista(ListView):
     model = Squadra
     mie = False
 
     def get_queryset(self):
         base_qs = super(SquadreLista,self).get_queryset()
+        qs = base_qs.order_by('-confermata','nome')
         if self.mie:
-            return base_qs.filter(owner=self.request.user)
+            return qs.filter(owner=self.request.user)
         else:
-            return base_qs
+            return qs
 
 

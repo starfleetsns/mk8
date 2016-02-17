@@ -6,9 +6,9 @@
 
 {% block content %}
 
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Vai!" />
+<form action="" method="post">{% csrf_token %}
+  <p>Sei sicuro di voler eliminare la squadra "{{ object }}"?</p>
+  <input type="submit" value="Conferma" />
 </form>
 
 

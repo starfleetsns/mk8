@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     {% for squadra in object_list %}
-    <tr>
+    <tr{% if not squadra.confermata %} class="warning"{% endif %}>
       <td><a href="{% url 'torneo:squadreid' squadra.id %}">
 	  {{ squadra.nome }}</a></td>
       <td>{{ squadra.giocatore1 }}</td>

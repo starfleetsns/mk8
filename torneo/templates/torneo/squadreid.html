@@ -5,6 +5,7 @@
 
 {% block content %}
 {% if squadra %}
+
 <div class="squadracont">
   <div class="row">
     <div class="col-md-10">
@@ -49,6 +50,11 @@
 	  </div>
 	</div>
       </div>
+      {% if not squadra.confermata %}
+      <div class="row">
+	Squadra in attesa di conferma da parte di un admin
+      </div>
+      {% endif %}
     </div>
     <div class="col-md-2">
       <img src="{{ squadra.immagine.url }}" width="150">

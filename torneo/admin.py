@@ -29,8 +29,18 @@ class PartitaAdmin(admin.ModelAdmin):
         for squadra in Squadra.objects.all():
             squadra.ripunteggia()
         return instance
-        
 
-admin.site.register(Squadra)
+   
+class SquadraAdmin(admin.ModelAdmin):
+    list_display = ['nome','owner','giocatore1','giocatore2','confermata']
+    list_filter = ['confermata']
+
+    def conferma(self, request, queryset):
+        queryset.update(confermata=True)
+    conferma.short_description = "Conferma le squadre selezionate"
+
+    actions = [conferma]
+
+admin.site.register(Squadra, SquadraAdmin)
 admin.site.register(Partita, PartitaAdmin)
 
