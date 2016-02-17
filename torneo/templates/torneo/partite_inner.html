@@ -1,0 +1,36 @@
+{% if partite %}
+<table class="table table-hover table-striped">
+  <thead>
+    <tr><th>Data</th><th>Squadra1</th><th>Squadra2</th><th>Risultato</th>{% if user.is_authenticated %}<th></th>{% endif %}</tr>
+  </thead>
+  <tbody>
+    {% for partita in partite %}
+    <tr {% if partita.stato == partita.INCOGNITA %}class=info
+	{% elif partita.stato == partita.DONE %}class=success
+	{% else %}class=warning{% endif %}>
+      <td><a href="{% url 'torneo:partiteid' partita.id %}">{{ partita.data }}</a></td>
+      <td><a href="{% url 'torneo:squadreid' partita.squadra1.id %}">
+	  {{ partita.squadra1.nome }}</a></td>
+      <td><a href="{% url 'torneo:squadreid' partita.squadra2.id %}">
+	  {{ partita.squadra2.nome }}</a></td>
+      <td>
+	{% if partita.stato == partita.INCOGNITA %}Incognito
+	{% else %}
+	{{ partita.punteggio11|add:partita.punteggio12 }} - {{ partita.punteggio21|add:partita.punteggio22 }}
+	{% if partita.stato == partita.ATTESA1 or partita.stato == partita.ATTESA2 %}(da confermare)
+	{% endif %}
+	{% endif %}
+      </td>
+      {% if user.is_authenticated %}
+      <td>
+	{% include 'torneo/partita_pulsanti.html' with partita=partita %}
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+Non ci sono ancora partite
+{% endif %}
+

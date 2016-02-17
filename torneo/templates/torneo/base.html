@@ -27,8 +27,9 @@
           <ul class="nav navbar-nav">
 	    <li {% block indexli %}{% endblock %}><a href="{% url 'torneo:index' %}">Home</a></li>
             <li {% block squadreli %}{% endblock %}><a href="{% url 'torneo:squadre' %}">Squadre</a></li>
+            <li {% block partiteli %}{% endblock %}><a href="{% url 'torneo:partite' %}">Partite</a></li>
             <li {% block classificali %}{% endblock %}><a href="{% url 'torneo:classifica' %}">Classifica</a></li>
-            <li {% block calendarioli %}{% endblock %}><a href="{% url 'torneo:calendario' %}">Calendario</a></li>
+{#            <li {% block calendarioli %}{% endblock %}><a href="{% url 'torneo:calendario' %}">Calendario</a></li> #}
             <li {% block regolamentoli %}{% endblock %}><a href="{% url 'torneo:regolamento' %}">Regolamento</a></li>
           </ul>
 	  <ul class="nav navbar-nav navbar-right">
@@ -42,6 +43,7 @@
 		{% if user.is_authenticated %}
 		<li><a href="{% url 'torneo:squadrenuova' %}">Crea una squadra</a></li>
 		<li><a href="{% url 'torneo:squadremie' %}">Le mie squadre</a></li>
+		<li><a href="{% url 'torneo:partitemie' %}">Le mie partite</a></li>
 		<li class="divider" role="separator"></li>
 		<li><a href="{% url 'torneo:logout' %}">Logout</a></li>
 		{% else %}

@@ -1,56 +1,75 @@
-      body {
-      padding-top: 50px;
-      }
-      .main-template {
-      padding: 40px 15px;
-      font-size: 18px;
-      }
+body {
+    padding-top: 50px;
+}
+.main-template {
+    padding: 40px 15px;
+    font-size: 18px;
+}
 
-      .row {
-      margin-bottom: 0px;
-      }
-      .mycell {
-      background-color: #eee;
-      border: 1px solid #ddd;
-      text-align: center;
-      }
-      
-      .boldcell {
-      font-weight: 700;
-      }
+.row {
+    margin-bottom: 0px;
+}
+.mycell {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    text-align: center;
+}
 
-      .squadracont {
-      background-color: #eee;
-      text-align: center;
-      padding: 15px;
-      border-radius: 8px;
-      }
-      
-      .mycol {
-      margin-top:10px;
-      }
-      
-      .squadracont h1 {
-      margin-top: 0px;
-      }
-      
-      .squadracont .row {
-      margin-bottom: 5px;
-      }
+.boldcell {
+    font-weight: 700;
+}
 
-      #splashscreen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 100%;
-      width: 100%;
-      display: none;
-      overflow: hidden;
-      }
-      
-      #splashscreen img {
-      width: inherit;
-      height: inherit;
-      }
+.squadracont {
+    background-color: #eee;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.mycol {
+    margin-top:10px;
+}
+
+.squadracont h1 {
+    margin-top: 0px;
+}
+
+.squadracont .row {
+    margin-bottom: 5px;
+}
+
+.partitatitle {
+    text-align: center;
+}
+
+.partitasquadra {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.partitasquadra h3 {
+    text-align: center;
+    font-weight: 800;
+}
+
+.partitacentro {
+    text-align: center;
+}
+
+#splashscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    overflow: hidden;
+}
+
+#splashscreen img {
+    width: inherit;
+    height: inherit;
+}
 

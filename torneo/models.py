@@ -19,8 +19,10 @@ class Squadra(models.Model):
 
     def ripunteggia(self):
         p = 0
-        p += sum([ partita.punteggio1 for partita in self.partite1.all() ])
-        p += sum([ partita.punteggio2 for partita in self.partite2.all() ])
+        p += sum([ partita.punteggio11 for partita in self.partite1.filter(stato=Partita.DONE).all() ])
+        p += sum([ partita.punteggio12 for partita in self.partite1.filter(stato=Partita.DONE).all() ])
+        p += sum([ partita.punteggio21 for partita in self.partite2.filter(stato=Partita.DONE).all() ])
+        p += sum([ partita.punteggio22 for partita in self.partite2.filter(stato=Partita.DONE).all() ])
         self.punteggio = p
         self.save()
         return p
@@ -31,9 +33,23 @@ class Squadra(models.Model):
 class Partita(models.Model):    
     squadra1 = models.ForeignKey(Squadra,related_name="partite1")
     squadra2 = models.ForeignKey(Squadra,related_name="partite2")
-    punteggio1 = models.IntegerField(default=0)
-    punteggio2 = models.IntegerField(default=0)
-    done = models.BooleanField(default=False)
+    punteggio11 = models.IntegerField(default=0,verbose_name="Prima squadra, primo giocatore")
+    punteggio12 = models.IntegerField(default=0,verbose_name="Prima squadra, secondo giocatore")
+    punteggio21 = models.IntegerField(default=0,verbose_name="Seconda squadra, primo giocatore")
+    punteggio22 = models.IntegerField(default=0,verbose_name="Seconda squadra, secondo giocatore")
+
+    INCOGNITA = "INC"
+    ATTESA1 = "AT1"
+    ATTESA2 = "AT2"
+    DONE = "DON"
+
+    stato = models.CharField(max_length=3,
+                             choices=[ (INCOGNITA, "Partita non disputata" ),
+                                       (ATTESA1, "In attesa di conferma dalla prima squadra"),
+                                       (ATTESA2, "In attesa di conferma della seconda squadra"),
+                                       (DONE, "Punteggio confermato"), ],
+                             default = INCOGNITA)
+
     data = models.DateField()
 
     def __str__(self):

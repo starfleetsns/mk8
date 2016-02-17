@@ -1,0 +1,64 @@
+<div class="partitatitle">
+  <h1><a href="{% url 'torneo:partiteid' partita.id %}">Partita del {{ partita.data }}</a></h1>
+</div>
+<div class="row">
+  <div class="col-md-5 partitasquadra">
+    <div class="row">
+      <h3><a href="{% url 'torneo:squadreid' partita.squadra1.id %}">{{ partita.squadra1.nome }}</a></h3>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+	<h4>{{ partita.squadra1.giocatore1 }}</h4>
+      </div>
+      <div class="col-md-2">
+	{{ partita.punteggio11 }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+	<h4>{{ partita.squadra1.giocatore2 }}</h4>
+      </div>
+      <div class="col-md-2">
+	{{ partita.punteggio12 }}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 partitacentro">
+    <div class="row">
+      <h2>VS</h2>
+    </div>
+    <div class="row">
+      <br/>
+    </div>
+    <div class="row">
+      {{ partita.punteggio11|add:partita.punteggio12 }} - {{ partita.punteggio21|add:partita.punteggio22 }}
+    </div>
+    <div class="row">
+      {% if partita.stato != partita.DONE %}
+      Da confermare
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-5 partitasquadra">
+    <div class="row">
+      <h3><a href="{% url 'torneo:squadreid' partita.squadra2.id %}">{{ partita.squadra2.nome }}</a></h3>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+	<h4>{{ partita.squadra2.giocatore1 }}</h4>
+      </div>
+      <div class="col-md-2">
+	{{ partita.punteggio21 }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+	<h4>{{ partita.squadra2.giocatore2 }}</h4>
+      </div>
+      <div class="col-md-2">
+	{{ partita.punteggio22 }}
+      </div>
+    </div>
+  </div>
+</row>
+    

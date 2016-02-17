@@ -1,0 +1,31 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Torneo MK8{% endblock %}
+{% block partiteli %}class="active"{% endblock %}
+
+{% block content %}
+
+{% include 'torneo/partita_inner.html' with partita=object %}
+
+<form action="" method="post">{% csrf_token %}
+  {% if azione == 'approva' %}
+  Vuoi davvero confermare il risultato della partita?<br/>
+  <input type="submit" value="Conferma" />
+  {% elif azione == 'rifiuta' %}
+  Vuoi davvero rifiutare il risultato della partita?<br/>
+  <input type="submit" value="Rifiuta" />
+  {% endif %}
+  {{ form.as_p }}
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}Dettaglio squadra{% endblock %}
+{% block partiteli %}class="active"{% endblock %}
+
+{% block content %}
+
+{% include 'torneo/partita_inner.html' with partita=object %}
+
+{% if user.is_authenticated %}
+<div>
+  Azioni disponibili: {% include 'torneo/partita_pulsanti.html' with partita=object %}
+</div>
+{% endif %}
+
+{% endblock %}
+
+

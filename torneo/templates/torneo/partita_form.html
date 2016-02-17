@@ -1,0 +1,96 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Torneo MK8{% endblock %}
+{% block partiteli %}class="active"{% endblock %}
+
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="{{ form.data.id_for_label }}" class="col-sm-2 control-label">Data</label>
+    <div class="col-sm-10">
+      {#      <input id="{{ form.data.id_for_label }}" name="data" value="{{ form.data.value }}" type="date" class="form-control"></input> #}
+      {{ form.data }}
+    </div>
+    {{ form.data.errors }}
+  </div>
+
+  <div class="partitasquadra">
+    <div class="row">
+      <h3>{{ object.squadra1.nome }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+	<div class="row">
+	  <label for="{{ form.punteggio11.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra1.giocatore1 }}</label>
+	</div>
+	<div class="row">
+	  {{ form.punteggio11.errors }}
+	</div>
+      </div>
+      <div class="col-sm-2">
+	<input id="{{ form.punteggio11.id_for_label }}" name="{{ form.punteggio11.html_name }}" value="{{ form.punteggio11.value }}" type="number" min="3" max="720" class="form-control"></input>
+      </div>
+      <div class="col-sm-2">
+	<input id="{{ form.punteggio12.id_for_label }}" name="{{ form.punteggio12.html_name }}" value="{{ form.punteggio12.value }}" type="number" min="3" max="720" class="form-control"></input>
+      </div>
+      <div class="col-sm-4">
+	<div class="row">
+	  <label for="{{ form.punteggio12.id_for_label }}" class="col-sm-12">{{ object.squadra1.giocatore2 }}</label>
+	</div>
+	<div class="row">
+	  {{ form.punteggio12.errors }}
+	</div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="partitasquadra">
+    <div class="row">
+      <h3>{{ object.squadra2.nome }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+	<div class="row">
+	  <label for="{{ form.punteggio21.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra2.giocatore1 }}</label>
+	</div>
+	<div class="row">
+	  {{ form.punteggio21.errors }}
+	</div>
+      </div>
+      <div class="col-sm-2">
+	<input id="{{ form.punteggio21.id_for_label }}" name="{{ form.punteggio21.html_name }}" value="{{ form.punteggio21.value }}" type="number" min="3" max="720" class="form-control"></input>
+      </div>
+      <div class="col-sm-2">
+	<input id="{{ form.punteggio22.id_for_label }}" name="{{ form.punteggio22.html_name }}" value="{{ form.punteggio22.value }}" type="number" min="3" max="720" class="form-control"></input>
+      </div>
+      <div class="col-sm-4">
+	<div class="row">
+	  <label for="{{ form.punteggio22.id_for_label }}" class="col-sm-12">{{ object.squadra2.giocatore2 }}</label>
+	</div>
+	<div class="row">
+	  {{ form.punteggio22.errors }}
+	</div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Vai!</button>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

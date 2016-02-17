@@ -6,20 +6,13 @@ from django.contrib import messages
 # Register your models here.
 
 class PartitaAdmin(admin.ModelAdmin):
-    fields = ['data','squadra1','squadra2','punteggio1','punteggio2']
-    list_display = ['data','squadra1','squadra2','punteggio1','punteggio2', 'done']
-    list_filter = ['data','done']
+    fields = ['data','squadra1','squadra2','punteggio11','punteggio12','punteggio21','punteggio22','stato']
+    list_display = ['data','squadra1','squadra2', 'stato']
+    list_filter = ['data','stato']
 
     
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
-        if (instance.punteggio1 > 0) and (instance.punteggio2 > 0):
-            instance.done = True
-        elif (instance.punteggio1 == 0) and (instance.punteggio2 == 0):
-            instance.done = False
-        else:
-            messages.error(request, 'Non capisco se sia stata disputata la partita o no, quindi non salvo!')
-            return instance
         instance.save()
         form.save_m2m()
         # instance.squadra1.ripunteggia()

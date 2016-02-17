@@ -1,13 +1,18 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-from torneo.models import Squadra
+from django.views.generic import ListView,DetailView
+from torneo.models import Squadra,Partita
 
 from torneo import views
 
 urlpatterns = patterns('',
                        url(r'^classifica/$',views.classifica, name='classifica'),
-                       url(r'^calendario/$',views.calendario, name='calendario'),
+#                       url(r'^calendario/$',views.calendario, name='calendario'),
+                       url(r'^partite/(?P<pk>\d+)/modifica/$',views.PartiteModifica.as_view(),name='partitemodifica'),
+                       url(r'^partite/(?P<pk>\d+)/(?P<azione>(approva|rifiuta))/$',views.PartiteApprova.as_view(),name='partiteapprova'),
+                       url(r'^partite/$',views.PartiteLista.as_view(),name='partite'),
+                       url(r'^partite/(?P<pk>\d+)/$',DetailView.as_view(model=Partita),name='partiteid'),
+                       url(r'^partite/mie/$',views.PartiteLista.as_view(mie=True),name='partitemie'),
                        url(r'^regolamento/$',views.regolamento, name='regolamento'),
 #                       url(r'^squadre/$',ListView.as_view(model=Squadra,),name='squadre'),
                        url(r'^squadre/$',views.SquadreLista.as_view(),name='squadre'),

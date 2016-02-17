@@ -2,11 +2,11 @@
 
 {% block title %}Calendario{% endblock %}
 
-{% block calendarioli %}class="active"{% endblock %}
+{% block partiteli %}class="active"{% endblock %}
 
 {% block content %}
 
-{% include 'torneo/partite_inner.html' with partite=lista %}
+{% include 'torneo/partite_inner.html' with partite=object_list %}
 
 {% endblock %}
 
