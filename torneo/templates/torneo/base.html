@@ -48,7 +48,6 @@
 		<li><a href="{% url 'torneo:logout' %}?next={{ request.path }}">Logout</a></li>
 		{% else %}
 		<li><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login con Google</a></li>
-		<li><a href="{% url 'torneo:login' %}?next={{ request.path }}">Login locale</a></li>
 		{% endif %}
 	      </ul>
 	    </li>

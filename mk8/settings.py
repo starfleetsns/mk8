@@ -85,7 +85,7 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/torneo/login/'
+LOGIN_URL = '/login/google-oauth2/'
 LOGIN_REDIRECT_URL = '/torneo/'
 
 from mk8.local_settings import *
