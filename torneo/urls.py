@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,TemplateView
 from torneo.models import Squadra,Partita
 
 from torneo import views
@@ -14,6 +14,7 @@ urlpatterns = patterns('',
                        url(r'^partite/(?P<pk>\d+)/$',DetailView.as_view(model=Partita),name='partiteid'),
                        url(r'^partite/mie/$',views.PartiteLista.as_view(mie=True),name='partitemie'),
                        url(r'^regolamento/$',views.regolamento, name='regolamento'),
+                       url(r'^istruzioni/$',TemplateView.as_view(template_name="torneo/istruzioni.html"), name='istruzioni'),
 #                       url(r'^squadre/$',ListView.as_view(model=Squadra,),name='squadre'),
                        url(r'^squadre/$',views.SquadreLista.as_view(),name='squadre'),
                        url(r'^squadre/mie/$',views.SquadreLista.as_view(mie=True),name='squadremie'),

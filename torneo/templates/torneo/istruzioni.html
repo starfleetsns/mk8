@@ -1,0 +1,90 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+{% block istruzionili %}class="active"{% endblock %}
+
+{% block content %}
+
+<div id="index">
+  <h1>Istruzioni</h1>
+  Qui potete trovare alcune istruzioni per l'uso di questo sito.
+  <h2>Login</h2>
+  <p>
+    Per il login utilizza un account Google (e.g. quello della Scuola),
+    ricordati di usare sempre lo stesso perché la tua squadra è legata
+    ad esso.
+  </p>
+  
+  <h2>Squadre</h2>
+  <h3>Creazione</h3>
+  <p>
+    Puoi creare una squadra dal menù in alto a destra, ogni squadra è
+    caratterizzata da un nome, il nome dei componenti ed eventualmente
+    da un'immagine.
+  </p>
+  <p>
+    Una volta creata una squadra questa dovrà essere approvata da un
+    organizzatore del torneo.
+  </p>
+  <iframe width="420" height="315"
+  src="https://www.youtube.com/embed/l7UgUfg9NYw" frameborder="0" allowfullscreen></iframe>
+  <h3>Modifica</h3>
+  <p>
+    Il creatore di una squadra può modificare in qualsiasi momento il
+    nome dei giocatori e l'immagine della squadra. Il nome è
+    modificabile solo dagli organizzatori.
+  </p>
+  <h3>Lista</h3>
+  <p>
+    Nella lista delle squadre vengono visualizzate con sfondo giallo
+    le squadre non ancora confermate dagli organizzatori
+  </p>
+  
+  <h2>Partite</h2>
+  <h3>Caricamento dei risultati</h3>
+  <p>
+    Il proprietario di una squadra può caricare il punteggio delle
+    partite che ha giocato, per evitare errori il proprietario
+    dell'altra squadra deve confermare questo punteggio.
+  </p>
+  <p>
+    Operativamente la procedura è la seguente:
+    <ol>
+      <li>Il proprietario di una squadra carica il punteggio finale di
+	una partita;</li>
+      <li>il proprietario dell'altra squadra può decidere se
+      confermare questo risultato rendendolo definitivo o se
+	rifiutarlo;</li>
+      <li>se il secondo rifiuta il risultato dopo avrà la possibilità
+	di caricare un nuovo risultato che dovrà essere approvato dal
+	primo.</li>
+    </ol>
+  </p>
+  <h3>Lista</h3>
+  <p>
+    La lista delle partite sarà disponibile dall'inizio del torneo.
+  </p>
+  <p>
+    Nella lista delle partite queste avranno sfondi di colore diverso
+    a seconda del loro stato:
+    <ul>
+      <li><div class="bg-info">azzurri se nessuno ha ancora caricato
+	  il risultato della partita;</div></li>
+      <li><div class="bg-success">verdi se il risultato della partita
+	  è stato caricato e confermato dalle squadre;</div></li>
+      <li><div class="bg-warning">gialli se il risultato è stato
+	  caricato da una squadra ma non confermato dall'altra.</div></li>
+    </ul>
+  </p>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
