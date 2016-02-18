@@ -13,7 +13,7 @@
 	<div class="col-md-12"><h1>{{ squadra.nome }}{% if squadra.owner == user or user.is_superuser %} <a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>{% endif %}</h1></div>
       </div>
       <div class="row">
-	<div class="col-md-4 mycol">
+	<div class="col-md-3 mycol">
 	  <div class="row">
 	    <div class="boldcell">Giocatore 1</div>
 	  </div>
@@ -35,13 +35,21 @@
 	    <div>{{ squadra.punteggio }}</div>
 	  </div>
 	</div>
+	<div class="col-md-2 mycol">
+	  <div class="row">
+	    <div class="boldcell">Scarto totale</div>
+	  </div>
+	  <div class="row">
+	    <div>{{ squadra.lunghezza }}</div>
+	  </div>
+	</div>
 	<div class="col-md-1">
 	  <div class="row">
 	  </div>
 	  <div class="row">
 	  </div>
 	</div>
-	<div class="col-md-4 mycol">
+	<div class="col-md-3 mycol">
 	  <div class="row">
 	    <div class="boldcell">Giocatore 2</div>
 	  </div>
