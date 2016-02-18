@@ -19,7 +19,7 @@ def squadreid(request,idsquadra):
     return render(request,'torneo/squadreid.html',{'squadra':squadra,'partite':partite})
 
 def classifica(request):
-    squadre = Squadra.objects.filter(confermata=True).order_by('-punteggio').all()
+    squadre = Squadra.objects.filter(confermata=True).order_by('-punteggio','-lunghezza').all()
 #    lista = [ {'pos':i+1 , 's':squadre[i] } for i in range(len(squadre))]
     return render(request,'torneo/classifica.html',{'lista':squadre})
 
@@ -192,6 +192,7 @@ class PartiteApprova(UpdateView):
     def form_valid(self,form):
         if self.kwargs['azione'] == 'approva':
             form.instance.stato = Partita.DONE
+            form.instance.save()
             for squadra in Squadra.objects.all():
                 squadra.ripunteggia()
         elif self.kwargs['azione'] == 'rifiuta':

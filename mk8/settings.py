@@ -21,8 +21,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'torneo',
     'social.apps.django_app.default',
+    'torneo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,6 +53,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
 )
+
+MIGRATION_MODULES = {
+    # social.apps.django_app.default
+    'default': 'mk8.mysocial.migrations',
+}
 
 ROOT_URLCONF = 'mk8.urls'
 
