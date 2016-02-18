@@ -45,9 +45,10 @@
 		<li><a href="{% url 'torneo:squadremie' %}">Le mie squadre</a></li>
 		<li><a href="{% url 'torneo:partitemie' %}">Le mie partite</a></li>
 		<li class="divider" role="separator"></li>
-		<li><a href="{% url 'torneo:logout' %}">Logout</a></li>
+		<li><a href="{% url 'torneo:logout' %}?next={{ request.path }}">Logout</a></li>
 		{% else %}
 		<li><a href="{% url 'torneo:login' %}?next={{ request.path }}">Login</a></li>
+		<li><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a></li>
 		{% endif %}
 	      </ul>
 	    </li>

@@ -23,7 +23,7 @@ urlpatterns = patterns('',
                        url(r'^squadre/nuova/$',login_required(views.SquadreNuova.as_view()), name='squadrenuova'),
                        url(r'^squadre/(?P<pk>\d+)/cancella/$',login_required(views.SquadreCancella.as_view()), name='squadrecancella'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
-                       url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+                       url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
                        url(r'^$',views.index, name='index')
 #                           # ex: /polls/
 #                               url(r'^$', views.index, name='index'),

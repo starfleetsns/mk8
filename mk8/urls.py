@@ -16,8 +16,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^torneo/',include('torneo.urls', namespace='torneo')),
-#    url(r'^$','django.contrib.staticfiles.views.serve', kwargs= {'path':'torneo/index.html'})
-    url(r'^$',RedirectView.as_view(url='torneo/',permanent=False))
+    #    url(r'^$','django.contrib.staticfiles.views.serve', kwargs= {'path':'torneo/index.html'})
+    url(r'^$',RedirectView.as_view(url='torneo/',permanent=False)),
+    url('', include('social.apps.django_app.urls', namespace='social')),
 )
 
 if (settings.SERVE_MEDIA):
