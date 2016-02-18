@@ -20,13 +20,11 @@ e un simbolo da associare al proprio team.</p>
 
 <h2>ORGANIZZAZIONE</h2>
 
-<p>Il campionato è diviso in due fasi: girone all'italiana (o Robin Round) e finali a doppia eliminazione.</p>
+<p>Il campionato è diviso in due fasi: girone all'italiana e finali a doppia eliminazione.</p>
 
 <h3>GIRONE ALL'ITALIANA</h3>
 
-<p>(NB Per evitare ambiguità, in seguito indicheremo come "centimetri" i punti realizzati nelle corse da parte di ogni giocatore e come "lunghezza" la somma di essi).</p>
-
-<p>In questa fase ogni squadra affronta tutte le altre due volte (il calendario delle partite è visualizzabile online) secondo la seguente modalità:
+<p>La prima fase del campionato prevede che ogni squadra affronti tutte le altre due volte. La sfida fra due squadre avviene secondo la seguente modalità:
   <ul>
     <li>Sfida: sfida individuale</li>
     <li>Numero corse: 8</li>
@@ -38,48 +36,69 @@ e un simbolo da associare al proprio team.</p>
   </ul>
 </p>
 
-<p>Ogni giocatore di ogni coppia è completamente autonomo durante le 8 corse di ogni singola sfida, anche se è lecito supportare il proprio compagno di squadra durante ogni gara.</p>
-<p>Al termine delle 8 corse, ad ogni squadra viene associata una
-  lunghezza pari alla somma dei centimetri dei due giocatori della
-  coppia. Se tale lunghezza è uguale allora è un caso di parità e
-  nessuna delle squadre guadagna punti in campionato. Se invece la
-  lunghezza non è uguale, si considera lo scarto fra quello maggiore e
-  quello minore. A seconda dello scarto la squadra vincente guadagna
-  un numero di punti in campionato pari a:
+<p>Al termine della sfida (cioè dopo aver effettuato 8 corse), ad ogni squadra viene associato un punteggio pari alla somma dei punti realizzati dai propri giocatori.
+Se i punteggi conseguiti dalle due squadre sono uguali, allora la sfida termina in parità e in classifica nessuna squadra guadagna alcunché. 
+Se invece i punteggi totali sono diversi, allora si considera la differenza fra quello maggiore e quello minore (in modo che sia positiva). 
+La squadra che ha realizzato il punteggio più alto vince la sfida e ottiene un numero di punti in campionato pari a
   <ul>
-    <li>1 se lo scarto è minore o uguale di 10</li>
+    <li>1 se lo scarto è maggiore stretto di 0 e minore o uguale di 10</li>
     <li>2 se lo scarto è maggiore stretto di 10 e minore o uguale di 30</li>
     <li>3 se lo scarto è maggiore stretto di 30</li>
   </ul>
 </p>
 
-<p>Ad ogni squadra in campionato si associano due parametri:
-  <ol>
-    <li>il punteggio totale realizzato, dato dalla somma dei punti ottenuti in caso di vittoria di una sfida;</li>
-    <li>la differenza in centimetri, data dalla somma CON SEGNO di
-    tutti gli scarti in ogni sfida con un'altra squadra. Dunque se la
-    coppia risulta vincente, lo scarto si somma alla differenza in
-    centimetri, altrimenti si sottrae.</li>
-  </ol>
-La classifica parziale del campionato è ordinata in primis secondo il
-  punteggio totale e in secundis secondo la differenza in centimetri.
+<p>La squadra vincente:
+  <ul>
+    <li>Somma i punti ottenuti nella sfida a quelli già eventualmente accumulati nelle sfide precedenti</li>
+    <li>Somma la differenza punti conseguita in questa sfida al suo scarto totale in campionato eventualmente accumulato negli scontri precedenti</li>
+  </ul>
 </p>
+
+<p>La squadra perdente:
+  <ul>
+    <li>Mantiene lo stesso punteggio in campionato che possedeva prima della sfida</li>
+    <li>Sottrae la differenza punti conseguita in questa sfida al suo scarto totale in campionato eventualmente accumulato negli scontri precedenti.</li>
+  </ul>
+</p>
+
+<p>La classifica è ordinata in base al numero di punti realizzati nelle varie sfide. Nel caso due squadre abbiano lo stesso numero di punti, allora
+ha la precedenza in classifica quella con lo scarto totale maggiore.</p>
+
 
 <h3>DOPPIA ELIMINAZIONE</h3>
 
-<p>Al termine del girone all'italiana (cioè quando ogni squadra ha affrontato tutte le altre due volte), le prime 8 squadre in campionato si scontrano in una fase ad a doppia eliminazione.</p>
-<p>Le prime 4 squadre in classifica (posizione 1 - 4) formano il girone superiore, le altre 4 (posizione 5 - 8) il girone inferiore.</p>
-<p>La fase a doppia eliminazione prosegue per sfide tra squadre dei medesimi gironi in questo modo: nel girone superiore, la squadra vincente passa il turno, la squadra perdente invece precipita nel girone inferiore; nel girone inferiore, la squadra vincente passa il turno, mentre quella perdente viene eliminata dal torneo. Ogni turno di questa fase prosegue con un aumento progressivo del numero di corse a parità di tutte le altre condizioni.</p>
-<p>La vittoria in ogni sfida è assegnata alla squadra che realizza la
-  lunghezza più elevata con uno scarto maggiore o uguale al NUMERO DI
-  CORSE della sfida. In caso di parità, si eseguono altre 4 corse
-  addizionali con lo stesso criterio (almeno 4 centimetri di scarto)
-  finché non si determina un vincitore.</p>
+<p>Al termine del girone all'italiana (cioè dopo che ogni squadra ha affrontato tutte le altre due volte), 
+  le prime 8 squadre in campionato accedono alla seconda ed ultima fase del campionato detta "a doppia eliminazione".
+</p>
+<p>
+  Questa modalità si suddivide in 4 turni successivi. In tutti i turni le sfide fra le squadre avvengono con le stesse modalità del girone all'italiana, con
+  la sola differenza nel numero di corse da effettuare:
+  <ul>
+    <li>TURNO 1: 12 corse</li>
+    <li>TURNO 2: 16 corse</li>
+    <li>TURNO 3: 32 corse</li>
+    <li>TURNO 4: 48 corse</li>
+  </ul>
+</p>
+
+<p>Inoltre, cambia il criterio di assegnazione della vittoria per tutti i turni. Dopo aver determinato la differenza punti fra le due squadre al termine delle N corse 
+(dove N è 12, 16, 32, 48 rispettivamente nel primo, secondo, terzo e quarto turno) possono esserci due casi:
+  <ul>
+    <li>Se tale differenza è strettamente maggiore di N, allora la squadra che ha conseguito il punteggio più alto vince la sfida</li>
+    <li>Se tale differenza è minore o uguale di N, allora le due squadre si affrontano in 4 corse addizionali. La squadra che al termine di queste corse
+      realizza il punteggio totale più alto vince la sfida. In caso di parità, si ripete questo passaggio finché non viene determinato un vincitore.</li>
+  </ul>
+</p>
+
+<p>Segue una breve descrizione della modalità a doppia eliminazione.</p>
+
+<p>Considerando la classifica finale del girone all'italiana, le prime quattro squadre (posizione 1 - 4) formano il girone superiore, mentre le altre quattro
+(posizione 5 - 8) formano il girone inferiore. Da qui inizia il primo turno.</p>
 
 
 <h4>PRIMO TURNO (12 corse)</h4>
 
-<p>Indicando con 1 - 8 le squadre in base alla classifica finale del girone all'italiana, nel primo turno ci sono le seguenti sfide:
+<p>Indicando con le cifre da 1 a 8 le squadre (in base alla classifica finale nella classifica), nel primo turno avvengono le seguenti sfide:
   
   <h5>GIRONE SUPERIORE</h5>
   <ul>
@@ -94,9 +113,12 @@ La classifica parziale del campionato è ordinata in primis secondo il
   </ul>
 </p>
 
+<p>Al termine di questo turno, le squadre sconfitte nelle sfide C e D vengono eliminate collocandosi a pari merito alla SETTIMA posizione. Le squadre sconfitte
+nelle sfide A e B invece escono dal girone superiore e accedono al girone inferiore. Pertanto restano in gioco 6 squadre.</p>
+
 <h4>SECONDO TURNO (16 corse)</h4>
 
-<p>Al secondo turno (dopo l'eliminazione delle squadre perdenti della sfida C e D) ci sono le seguenti sfide:
+<p>Nel secondo turno avvengono le seguenti sfide:
   
   <h5>GIRONE SUPERIORE</h5>
   <ul>
@@ -111,24 +133,31 @@ La classifica parziale del campionato è ordinata in primis secondo il
   </ul>
 </p>
 
+<p>Al termine di questo turno, le squadre sconfitte nelle sfide Y e Z vengono eliminate collocandosi a pari merito alla QUINTA posizione. La squadra sconfitta
+nella sfida X esce dal girone superiore e accede al girone inferiore. La squadra vincente nella sfida X è la vincitrice del girone superiore e accede
+automaticamente al quarto turno.
+Dunque restano in gioco complessivamente 4 squadre.</p>
+
 <h4>TERZO TURNO (32 corse)</h4>
 
 <p>Il terzo turno si svolge inizialmente nel girone inferiore, e prevede lo scontro
 <br/>
 Vincente sfida Y - Vincente sfida Z
 <br/>
-La squadra sconfitta si classifica al QUARTO POSTO nell'intero
-campionato.
+La squadra sconfitta viene eliminata collocandosi alla QUARTA posizione.
 </p>
-<p>In seguito la vincente di questa sfida affronta la squadra perdente della sfida X. La coppia sconfitta si classifica TERZA nell'intero campionato.</p>
 
-<h4>FINALI (48 corse)</h4>
+<p>La vincente di questa sfida affronta la squadra perdente della sfida X avvenuta nel secondo turno: la coppia sconfitta viene eliminata e si classifica al TERZO posto,
+mentre la squadra vincente acquisisce il titolo di vincitrice del girone inferiore e accede al quarto ed ultimo turno.</p>
 
-<p>Le ultime due squadre rimaste (vincente sfida X e squadra sopravvisuta al terzo turno) si affrontano nella FINALE del campionato su tutte le 48 piste.</p>
-<p>Data l'assenza di tale modalità, si effettueranno 4 blocchi da 12 corse ciascuna IN ORDINE tenendo conto dei punteggi relativi.</p>
-<p>La squadra perdente si classifica al SECONDO POSTO nell'intero campionato.</p>
-<p>La squadra vincente ottiene la vittoria nel I campionato di Mario Kart 8.</p>
+<h4>QUARTO TURNO: FINALI (48 corse)</h4>
 
+<p>Le ultime due squadre rimaste, ovvero le vincitrici dei due gironi, si affrontano nella FINALE del campionato su tutte le 48 piste.
+Data l'assenza di tale modalità nel software di Mario Kart 8, le due finaliste si scontrano in due blocchi di 16 e 32 corse rispettivamente, avendo cura
+  di selezionare le piste IN ORDINE e tenendo conto della somma dei punti TOTALI realizzati in entrambi i blocchi.</p>
+
+<p>La squadra perdente si classifica al SECONDO posto nell'intero campionato.<br/>
+La squadra vincente, deh, ovviamente vince il campionato.</p>
 
 
 <h3>VARIE ED EVENTUALI</h3>
