@@ -9,7 +9,7 @@
 <p>Nome utente o password errati. Riprova.</p>
 {% endif %}
 
-<p>Effettua il login con il tuo account SNS.</p>
+<p>Ti consigliamo di fare il <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.GET.next }}">login con Google</a>.</p>
 <form method="post" action="{% url 'torneo:login' %}">
   {% csrf_token %}
   <div class="form-group">
