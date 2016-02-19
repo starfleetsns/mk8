@@ -20,15 +20,24 @@
     </ul>
   </p>
   <h3>Iscrizioni</h3>
-  <p>Le iscrizioni sono aperte fino al 21 febbraio 2016, per partecipare contatta
+  {% if user.is_authenticated %}
+  {% if user.preferenze.iscritto %}
+  <p>Se il tuo compagno si è già iscritto puoi <a href="{% url 'torneo:squadrenuova' %}"> creare una squadra</a></p>
+  {% else %}
+  <p>Puoi ora <a href="{% url 'torneo:giocatoripreferenze' %}">iscriverti</a> al torneo</p>
+  {% endif %}
+  {% else %}
+  <p>Le iscrizioni sono aperte fino al 21 febbraio 2016</p>
+  <p>Per iscriverti devi prima effettuare il <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">login con Google</a>.
+  <p>Altrimenti contatta:
     <ul>
       <li>Piero Lafiosca, camera 412,
 	<a href="mailto:piero.lafiosca@sns.it">piero.lafiosca@sns.it</a></li>
       <li>Gianluca Tasinato, camera 503,
 	<a href="mailto:gianluca.tasinato@sns.it">gianluca.tasinato@sns.it</a></li>
     </ul>
-    Oppure effettua il <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">login con Google</a> e poi <a href="{% url 'torneo:squadrenuova' %}">crea</a> la tua squadra.
   </p>
+  {% endif %}
   {% if nsquadre or npartite or npartitedone %}
   <h3>Statistiche</h3>
   <p>
