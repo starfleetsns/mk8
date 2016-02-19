@@ -20,16 +20,16 @@
     <tr{% if not squadra.confermata %} class="warning"{% endif %}>
       <td><a href="{% url 'torneo:squadreid' squadra.id %}">
 	  {{ squadra.nome }}</a></td>
-      <td>{{ squadra.giocatore1 }}</td>
-      <td>{{ squadra.giocatore2 }}</td>
+      <td>{{ squadra.giocatore1.get_full_name }}</td>
+      <td>{{ squadra.giocatore2.get_full_name }}</td>
       <td>{{ squadra.punteggio }}</td>
-      <td>{% if squadra.owner == user or user.is_superuser %}<a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span>{% endif %}</a></td>
+      <td>{% if squadra.giocatore1 == user or squadra.giocatore2 == user or user.is_superuser %}<a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span>{% endif %}</a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 <div class="bg-warning">Nota: le squadre con sfondo giallo non sono
-  ancora state confermate dagli orgranizzatori.</div>
+  ancora state confermate dagli organizzatori.</div>
 {% else %}
 Non ci sono squadre da visualizzare.
 {% endif %}

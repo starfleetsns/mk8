@@ -37,14 +37,17 @@
 	    <li role="presentation" class="dropdown">
 	      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
 		 aria-expanded="false">
-		{% if user.is_authenticated %}{{ user.username }}
+		{% if user.is_authenticated %}{{ user.get_full_name }} ({{ user.username }})
 		{% else %}Non autenticato{% endif %}
 		<span class="caret"></span></a>
 	      <ul class="dropdown-menu">
 		{% if user.is_authenticated %}
+		<li><a href="{% url 'torneo:giocatoripreferenze' %}">Iscrizione</a></li>
+		{% if user.preferenze.iscritto %}
 		<li><a href="{% url 'torneo:squadrenuova' %}">Crea una squadra</a></li>
 		<li><a href="{% url 'torneo:squadremie' %}">Le mie squadre</a></li>
 		<li><a href="{% url 'torneo:partitemie' %}">Le mie partite</a></li>
+		{% endif %}
 		<li class="divider" role="separator"></li>
 		<li><a href="{% url 'torneo:logout' %}?next={{ request.path }}">Logout</a></li>
 		{% else %}

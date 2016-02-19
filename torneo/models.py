@@ -1,9 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from django.db.models import Q
 
 # Create your models here.
+
+class PreferenzeUtente(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name="preferenze")
+    iscritto = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.user) + ' iscritto: '+str(self.iscritto)
+
 
 def funzione_scala(dl):
     if dl <= 0:
@@ -17,16 +26,15 @@ def funzione_scala(dl):
 
 class Squadra(models.Model):
     nome = models.CharField(max_length=200,verbose_name="Nome della squadra")
-    giocatore1 = models.CharField(max_length=200,verbose_name="Primo giocatore")
-    giocatore2 = models.CharField(max_length=200,verbose_name="Secondo giocatore")
+    giocatore1 = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="Primo giocatore",related_name="squadre1")
+    giocatore2 = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="Secondo giocatore",related_name="squadre2")
     punteggio = models.IntegerField(default=0)
     lunghezza = models.IntegerField(default=0)
     immagine = models.ImageField(upload_to='torneo/squadra',default='torneo/squadra/default.png')
-    owner = models.ForeignKey(User,related_name="squadre",blank=True,default=None,null=True)
     confermata = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.nome + ' ('+ self.giocatore1 + ' - '+self.giocatore2 +')'
+        return self.nome + ' ('+ str(self.giocatore1) + ' - '+ str(self.giocatore2) +')'
 
     def ripunteggia(self):
         p = 0
@@ -42,6 +50,9 @@ class Squadra(models.Model):
     
     def partite(self):
         return Partita.objects.filter(Q(squadra1=self)|Q(squadra2=self)).order_by('data').all()
+
+    def giocatori(self):
+        return [self.giocatore1, self.giocatore2]
 
 class Partita(models.Model):    
     squadra1 = models.ForeignKey(Squadra,related_name="partite1",verbose_name="Prima squadra")

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from torneo.models import Squadra,Partita
+from torneo.models import Squadra,Partita,PreferenzeUtente
 
 from django.contrib import messages
 
@@ -25,7 +25,7 @@ class PartitaAdmin(admin.ModelAdmin):
 
    
 class SquadraAdmin(admin.ModelAdmin):
-    list_display = ['nome','owner','giocatore1','giocatore2','confermata']
+    list_display = ['nome','giocatore1','giocatore2','confermata']
     list_filter = ['confermata']
 
     def conferma(self, request, queryset):
@@ -36,4 +36,5 @@ class SquadraAdmin(admin.ModelAdmin):
 
 admin.site.register(Squadra, SquadraAdmin)
 admin.site.register(Partita, PartitaAdmin)
+admin.site.register(PreferenzeUtente)
 

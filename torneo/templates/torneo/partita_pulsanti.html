@@ -1,21 +1,21 @@
-{% if partita.squadra1.owner == user or partita.squadra2.owner == user %}
+{% if partita.squadra1.giocatore1 == user or partita.squadra1.giocatore2 == user or partita.squadra2.giocatore1 == user or partita.squadra2.giocatore2 == user %}
 
 {% if partita.stato == partita.INCOGNITA %}
 <a href="{% url 'torneo:partitemodifica' partita.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
 
-{% elif partita.stato == partita.ATTESA1 and partita.squadra2.owner == user %}
+{% elif partita.stato == partita.ATTESA1 %}
+{% if partita.squadra2.giocatore1 == user or partita.squadra2.giocatore2 == user %}
 <a href="{% url 'torneo:partitemodifica' partita.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
-
-{% elif partita.stato == partita.ATTESA2 and partita.squadra1.owner == user %}
-<a href="{% url 'torneo:partitemodifica' partita.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
-
-{% elif partita.stato == partita.ATTESA1 and partita.squadra1.owner == user %}
+{% elif partita.squadra1.giocatore1 == user or partita.squadra1.giocatore2 == user %}
 <a href="{% url 'torneo:partiteapprova' partita.id 'approva' %}"><span class="glyphicon glyphicon glyphicon-ok"></span></a>
 <a href="{% url 'torneo:partiteapprova' partita.id 'rifiuta' %}"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
-
-{% elif partita.stato == partita.ATTESA2 and partita.squadra2.owner == user %}
+{% endif %}
+{% elif partita.stato == partita.ATTESA2 %}
+{% if partita.squadra1.giocatore1 == user or partita.squadra1.giocatore2 == user %}
+<a href="{% url 'torneo:partitemodifica' partita.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+{% elif partita.squadra2.giocatore1 == user or partita.squadra2.giocatore2 == user %}
 <a href="{% url 'torneo:partiteapprova' partita.id 'approva' %}"><span class="glyphicon glyphicon glyphicon-ok"></span></a>
 <a href="{% url 'torneo:partiteapprova' partita.id 'rifiuta' %}"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
-
+{% endif %}
 {% endif %}
 {% endif %}

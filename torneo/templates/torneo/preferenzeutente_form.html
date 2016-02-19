@@ -1,0 +1,23 @@
+{% extends "torneo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}preferenze utente{% endblock %}
+{#{% block squadreli %}class="active"{% endblock %}#}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Vai!" />
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

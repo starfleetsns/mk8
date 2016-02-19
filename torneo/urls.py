@@ -25,6 +25,7 @@ urlpatterns = patterns('',
                        url(r'^squadre/(?P<pk>\d+)/cancella/$',login_required(views.SquadreCancella.as_view()), name='squadrecancella'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
                        url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+                       url(r'^giocatori/preferenze/$',login_required(views.PreferenzeUtenteModifica.as_view()),name='giocatoripreferenze'),
                        url(r'^$',views.index, name='index')
 #                           # ex: /polls/
 #                               url(r'^$', views.index, name='index'),

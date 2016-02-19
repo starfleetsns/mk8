@@ -22,8 +22,8 @@
       <td>{{ forloop.counter }}</td>
       <td><a href="{% url 'torneo:squadreid' squadra.id %}">
 	  {{ squadra.nome }}</a></td>
-      <td>{{ squadra.giocatore1 }}</td>
-      <td>{{ squadra.giocatore2 }}</td>
+      <td>{{ squadra.giocatore1.get_full_name }}</td>
+      <td>{{ squadra.giocatore2.get_full_name }}</td>
       <td>{{ squadra.punteggio }}</td>
       <td>{{ squadra.lunghezza }}</td>
     </tr>

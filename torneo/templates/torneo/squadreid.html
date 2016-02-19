@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-md-10">
       <div class="row boldcell">
-	<div class="col-md-12"><h1>{{ squadra.nome }}{% if squadra.owner == user or user.is_superuser %} <a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>{% endif %}</h1></div>
+	<div class="col-md-12"><h1>{{ squadra.nome }}{% if squadra.giocatore1 == user or squadra.giocatore2 == user or user.is_superuser %} <a href="{% url 'torneo:squadremodifica' squadra.id %}"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>{% endif %}</h1></div>
       </div>
       <div class="row">
 	<div class="col-md-3 mycol">
@@ -18,7 +18,7 @@
 	    <div class="boldcell">Giocatore 1</div>
 	  </div>
 	  <div class="row">
-	    <div>{{ squadra.giocatore1 }}</div>
+	    <div>{{ squadra.giocatore1.get_full_name }}</div>
 	  </div>
 	</div>
 	<div class="col-md-1">
@@ -54,7 +54,7 @@
 	    <div class="boldcell">Giocatore 2</div>
 	  </div>
 	  <div class="row">
-	    <div>{{ squadra.giocatore2 }}</div>
+	    <div>{{ squadra.giocatore2.get_full_name }}</div>
 	  </div>
 	</div>
       </div>
