@@ -68,6 +68,8 @@ class SquadreNuova(CreateView):
     def form_valid(self,form):
         if not self.request.user.is_authenticated:
             raise PermissionDenied
+        if not hasattr(self.request.user,'preferenze'):
+            raise PermissionDenied
         if not self.request.user.preferenze.iscritto:
             raise PermissionDenied
         form.instance.giocatore1 = self.request.user
@@ -75,8 +77,10 @@ class SquadreNuova(CreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+        if not hasattr(self.request.user,'preferenze'):
+            return redirect('torneo:giocatoripreferenze')
         if not self.request.user.preferenze.iscritto:
-            raise PermissionDenied
+            return redirect('torneo:giocatoripreferenze')
         return super(SquadreNuova, self).dispatch(*args, **kwargs)
     
 
