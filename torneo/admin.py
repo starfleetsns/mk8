@@ -34,7 +34,10 @@ class SquadraAdmin(admin.ModelAdmin):
 
     actions = [conferma]
 
+class PreferenzeUtenteAdmin(admin.ModelAdmin):
+    list_filter = ['iscritto']
+    
 admin.site.register(Squadra, SquadraAdmin)
 admin.site.register(Partita, PartitaAdmin)
-admin.site.register(PreferenzeUtente)
+admin.site.register(PreferenzeUtente, PreferenzeUtenteAdmin)
 
