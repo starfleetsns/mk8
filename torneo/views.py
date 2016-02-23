@@ -40,6 +40,7 @@ def index(request):
         'nsquadre': Squadra.objects.filter(confermata=True).count(),
         'npartite':  Partita.objects.count(),
         'npartitedone' : Partita.objects.filter(stato=Partita.DONE).count(),
+        'ngiocatori': User.objects.filter(preferenze__iscritto=True).count(),
         'authenticated' : request.user.is_authenticated(),
         }
     if ('splash' not in request.session):
@@ -247,3 +248,10 @@ class PreferenzeUtenteModifica(UpdateView):
     def get_success_url(self):
         return reverse('torneo:index')#,kwargs={'idsquadra':self.get_object().id})
 
+
+class GiocatoriLista(ListView):
+    model = User
+
+    def get_queryset(self):
+        base_qs = super(GiocatoriLista, self).get_queryset()
+        return base_qs.filter(preferenze__iscritto=True).order_by('last_name','first_name')

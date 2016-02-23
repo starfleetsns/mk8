@@ -1,0 +1,35 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}giocatori{% endblock %}
+
+{% block giocatorili %}class="active"{% endblock %}
+
+{% block content %}
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr><th>Nome</th><th>Squadra</th></tr>
+  </thead>
+  <tbody>
+    {% for user in object_list %}
+    <tr>
+      <td>{{ user.get_full_name }}</td>
+      <td>
+	{% for squadra in user.squadre1.all %}
+	{% if squadra.confermata %}
+	<a href="{% url 'torneo:partiteid' squadra.id %}">{{ squadra.nome }}</a>
+	{% endif %}
+	{% endfor %}
+	{% for squadra in user.squadre2.all %}
+	{% if squadra.confermata %}
+	<a href="{% url 'torneo:partiteid' squadra.id %}">{{ squadra.nome }}</a>
+	{% endif %}
+	{% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

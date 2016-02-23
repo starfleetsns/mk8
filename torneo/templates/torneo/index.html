@@ -42,6 +42,9 @@
   <h3>Statistiche</h3>
   <p>
     <ul>
+    {% if ngiocatori %}
+    <li>Sono iscritto <strong>{{ ngiocatori }}</strong> giocatori</li>
+    {% endif %}
     {% if nsquadre %}
     <li>Sono registrate <strong>{{ nsquadre }}</strong> squadre</li>
     {% endif %}

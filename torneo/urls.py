@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,DetailView,TemplateView
 from torneo.models import Squadra,Partita
+from django.contrib.auth.models import User
 
 from torneo import views
 
@@ -25,6 +26,7 @@ urlpatterns = patterns('',
                        url(r'^squadre/(?P<pk>\d+)/cancella/$',login_required(views.SquadreCancella.as_view()), name='squadrecancella'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
                        url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+                       url(r'^giocatori/$',views.GiocatoriLista.as_view(),name='giocatori'),
                        url(r'^giocatori/preferenze/$',login_required(views.PreferenzeUtenteModifica.as_view()),name='giocatoripreferenze'),
                        url(r'^$',views.index, name='index')
 #                           # ex: /polls/
