@@ -28,6 +28,7 @@ urlpatterns = patterns('',
                        url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
                        url(r'^giocatori/$',views.GiocatoriLista.as_view(),name='giocatori'),
                        url(r'^giocatori/preferenze/$',login_required(views.PreferenzeUtenteModifica.as_view()),name='giocatoripreferenze'),
+                       url(r'^giocatori/modifica/$',views.GiocatoriModifica.as_view(),name='giocatorimodifica'),
                        url(r'^$',views.index, name='index')
 #                           # ex: /polls/
 #                               url(r'^$', views.index, name='index'),

@@ -255,3 +255,13 @@ class GiocatoriLista(ListView):
     def get_queryset(self):
         base_qs = super(GiocatoriLista, self).get_queryset()
         return base_qs.filter(preferenze__iscritto=True).order_by('last_name','first_name')
+
+class GiocatoriModifica(UpdateView):
+    model = User
+    fields = ['first_name','last_name']
+
+    def get_object(self):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('torneo:giocatori')

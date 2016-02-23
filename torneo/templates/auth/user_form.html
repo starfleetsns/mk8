@@ -1,0 +1,15 @@
+{% extends "torneo/base.html" %}
+
+{% block title %}modifica utente{% endblock %}
+
+{# {% block giocatorili %}class="active"{% endblock %} #}
+
+{% block content %}
+
+<form action="" method="post" class="form-horizontal">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary btn-lg">Modifica</button>
+</form>
+
+{% endblock %}
