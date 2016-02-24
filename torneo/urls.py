@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,DetailView,TemplateView
 from torneo.models import Squadra,Partita
 from django.contrib.auth.models import User
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from torneo import views
 
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
                        url(r'^partite/mie/$',views.PartiteLista.as_view(mie=True),name='partitemie'),
                        url(r'^regolamento/$',views.regolamento, name='regolamento'),
                        url(r'^istruzioni/$',TemplateView.as_view(template_name="torneo/istruzioni.html"), name='istruzioni'),
+                       url(r'^signage/$',xframe_options_exempt(views.signage),name='signage'),
 #                       url(r'^squadre/$',ListView.as_view(model=Squadra,),name='squadre'),
                        url(r'^squadre/$',views.SquadreLista.as_view(),name='squadre'),
                        url(r'^squadre/mie/$',views.SquadreLista.as_view(mie=True),name='squadremie'),
