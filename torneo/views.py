@@ -36,8 +36,8 @@ def calendario(request):
 #    return redirect('torneo:regolamento')
 
 def signage(request):
-    squadre = Squadra.objects.filter(confermata=True).order_by('-punteggio','-lunghezza').all()[:3]
-    giocatori = User.objects.filter(preferenze__iscritto=True).order_by('-dati__lunghezza').all()[:3]
+    squadre = Squadra.objects.filter(confermata=True).order_by('-punteggio','-lunghezza').all()
+    giocatori = User.objects.filter(preferenze__iscritto=True).order_by('-dati__lunghezza').all()
     return render(request,'torneo/signage.html',{'squadre':squadre,'giocatori':giocatori})
 
 def index(request):
