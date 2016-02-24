@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404
 from django.views.generic.edit import CreateView,UpdateView,DeleteView,ModelFormMixin
 from django.views.generic import ListView
-from torneo.models import Squadra,Partita,PreferenzeUtente
+from torneo.models import Squadra,Partita,PreferenzeUtente,DatiUtente
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse
@@ -115,7 +115,7 @@ class SquadreCancella(DeleteView):
             return squadra
         else:
             raise PermissionDenied
-#            if self.request.user in squara.giocatori():
+#            if self.request.user in squadra.giocatori():
 #                return squadra
 #            else:
 #                raise PermissionDenied
@@ -171,8 +171,14 @@ class PartiteModifica(UpdateView):
         if self.request.user in form.instance.squadra1.giocatori():
             if self.request.user in form.instance.squadra2.giocatori():
                 form.instance.stato=Partita.DONE
-                for squadra in Squadra.objects.all():
-                    squadra.ripunteggia()
+                form.instance.save()
+                instance.squadra1.ripunteggia()
+                instance.squadra2.ripunteggia()
+                for user in [ instance.squadra1.giocatore1 , instance.squadra1.giocatore2, instance.squadra2.giocatore1, instance.squadra2.giocatore2 ]:
+                    dati, created = DatiUtente.objects.get_or_create(user=user)
+                    dati.ripunteggia()
+                # for squadra in Squadra.objects.all():
+                #     squadra.ripunteggia()
             else:
                 form.instance.stato=Partita.ATTESA2
         elif self.request.user in form.instance.squadra2.giocatori():
@@ -209,8 +215,13 @@ class PartiteApprova(UpdateView):
         if self.kwargs['azione'] == 'approva':
             form.instance.stato = Partita.DONE
             form.instance.save()
-            for squadra in Squadra.objects.all():
-                squadra.ripunteggia()
+            form.instance.squadra1.ripunteggia()
+            form.instance.squadra2.ripunteggia()
+            for user in [ form.instance.squadra1.giocatore1 , form.instance.squadra1.giocatore2, form.instance.squadra2.giocatore1, form.instance.squadra2.giocatore2 ]:
+                dati, created = DatiUtente.objects.get_or_create(user=user)
+                dati.ripunteggia()
+            # for squadra in Squadra.objects.all():
+            #     squadra.ripunteggia()
         elif self.kwargs['azione'] == 'rifiuta':
             form.instance.stato = Partita.INCOGNITA
         else:

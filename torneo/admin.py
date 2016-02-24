@@ -1,5 +1,6 @@
 from django.contrib import admin
-from torneo.models import Squadra,Partita,PreferenzeUtente
+from torneo.models import Squadra,Partita,PreferenzeUtente,DatiUtente
+from django.contrib.auth.models import User
 
 from django.contrib import messages
 
@@ -15,12 +16,13 @@ class PartitaAdmin(admin.ModelAdmin):
         instance = form.save(commit=False)
         instance.save()
         form.save_m2m()
-        # instance.squadra1.ripunteggia()
-        # instance.squadra2.ripunteggia()        
-        # instance.squadra1.save()
-        # instance.squadra2.save()
-        for squadra in Squadra.objects.all():
-            squadra.ripunteggia()
+        instance.squadra1.ripunteggia()
+        instance.squadra2.ripunteggia()
+        for user in [ instance.squadra1.giocatore1 , instance.squadra1.giocatore2, instance.squadra2.giocatore1, instance.squadra2.giocatore2 ]:
+            dati, created = DatiUtente.objects.get_or_create(user=user)
+            dati.ripunteggia()
+        # for squadra in Squadra.objects.all():
+        #     squadra.ripunteggia()
         return instance
 
    

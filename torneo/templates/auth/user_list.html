@@ -8,7 +8,7 @@
 
 <table class="table table-hover table-striped">
   <thead>
-    <tr><th>Nome</th><th>Squadra</th></tr>
+    <tr><th>Nome</th><th>Squadra</th><th>Lunghezza</th></tr>
   </thead>
   <tbody>
     {% for user in object_list %}
@@ -25,6 +25,11 @@
 	<a href="{% url 'torneo:partiteid' squadra.id %}">{{ squadra.nome }}</a>
 	{% endif %}
 	{% endfor %}
+      </td>
+      <td>
+	{% if user.dati %}
+	{{ user.dati.lunghezza }}
+	{% endif %}
       </td>
     </tr>
     {% endfor %}

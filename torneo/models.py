@@ -13,6 +13,22 @@ class PreferenzeUtente(models.Model):
     def __str__(self):
         return str(self.user) + ' iscritto: '+str(self.iscritto)
 
+class DatiUtente(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name="dati")
+    lunghezza = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.user) + ' lungehzza: '+str(self.lunghezza)
+    
+    def ripunteggia(self):
+        l = 0
+        l += sum([ partita.punteggio11 for partite in [ squadra.partite1.filter(stato=Partita.DONE).all() for squadra in self.user.squadre1.all() ] for partita in partite ])
+        l += sum([ partita.punteggio21 for partite in [ squadra.partite2.filter(stato=Partita.DONE).all() for squadra in self.user.squadre1.all() ] for partita in partite ])
+        l += sum([ partita.punteggio12 for partite in [ squadra.partite1.filter(stato=Partita.DONE).all() for squadra in self.user.squadre2.all() ] for partita in partite ])
+        l += sum([ partita.punteggio22 for partite in [ squadra.partite2.filter(stato=Partita.DONE).all() for squadra in self.user.squadre2.all() ] for partita in partite ])
+        self.lunghezza = l
+        self.save()
+        return l
 
 def funzione_scala(dl):
     if dl <= 0:
