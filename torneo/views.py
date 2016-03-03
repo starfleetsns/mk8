@@ -42,19 +42,22 @@ def get_user_lunghezza(user):
         return 0
 
 def signage(request):
-    squadreraw = Squadra.objects.filter(confermata=True).order_by('-punteggio','-lunghezza').all()[:10]
+    squadreraw = Squadra.objects.filter(confermata=True).order_by('-punteggio','-lunghezza').all()
     squadre = [ {
         'nome' : squadra.nome,
         'punteggio' : squadra.punteggio,
         'lunghezza' : squadra.lunghezza,
         'npartite' : Partita.objects.filter(Q(squadra1=squadra)|Q(squadra2=squadra)).filter(stato=Partita.DONE).count(),
         } for squadra in squadreraw ]
-    giocatoriraw = User.objects.filter(preferenze__iscritto=True).order_by('-dati__lunghezza').all()[:10]
+    giocatoriraw = User.objects.filter(preferenze__iscritto=True).order_by('-dati__lunghezza').all()
     giocatori = [ {
         'nome' : giocatore.get_full_name() ,
         'lunghezza' : get_user_lunghezza(giocatore),
-        'npartite' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).count() ,
+        'npartite' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).count(),
         } for giocatore in giocatoriraw ]
+    for giocatore in giocatori:
+        giocatore['media'] = float(giocatore['lunghezza'])/max(1,giocatore['npartite'])
+    giocatori.sort(key=lambda g : -g['media'])
     return render(request,'torneo/signage.html',{'squadre':squadre,'giocatori':giocatori})
 
 def index(request):
