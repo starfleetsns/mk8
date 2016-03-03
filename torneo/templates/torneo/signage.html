@@ -28,7 +28,7 @@
 
 	<table class="table table-hover table-striped table-condensed">
 	  <thead>
-	        <tr><th>Nome</th><th>Punteggio</th><th>Partite giocate</th></tr>
+	        <tr><th>Nome</th><th>Punteggio</th><th>Partite</th><th>Lunghezza</th></tr>
 	  </thead>
 	  <tbody>
 	    {% for squadra in squadre %}
@@ -36,6 +36,7 @@
 	      <td>{{ squadra.nome }}</td>
 	      <td>{{ squadra.punteggio }}</td>
 	      <td>{{ squadra.npartite }}</td>
+	      <td>{{ squadra.lunghezza }}</td>
 	    </tr>
 	    {% endfor %}
 	  </tbody>
