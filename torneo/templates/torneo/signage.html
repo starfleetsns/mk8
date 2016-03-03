@@ -9,6 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'torneo/base.css' %}" />
+<!--    <style type="css">
+      tr td {
+      height: 10px;
+      }
+    </style>-->
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -23,19 +28,38 @@
     <div class="container"> 
       <div>
 	<h3>La classifica</h3>
-	<ol>
-	  {% for squadra in squadre %}
-	  <li>{{ squadra.nome }} ({{ squadra.punteggio }})</li>
-	  {% endfor %}
-	</ol>
+
+	<table class="table table-hover table-striped table-condensed">
+	  <thead>
+	        <tr><th>Nome</th><th>Punteggio</th><th>Partite giocate</th></tr>
+	  </thead>
+	  <tbody>
+	    {% for squadra in squadre %}
+	    <tr>
+	      <td>{{ squadra.nome }}</td>
+	      <td>{{ squadra.punteggio }}</td>
+	      <td>{{ squadra.npartite }}</td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
       </div>
       <div>
 	<h3>I migliori giocatori</h3>
-	<ol>
-	  {% for giocatore in giocatori %}
-	  <li>{{ giocatore.get_full_name }} ({{ giocatore.dati.lunghezza }})</li>
-	  {% endfor %}
-	</ol>
+	<table class="table table-hover table-striped table-condensed">
+	  <thead>
+	        <tr><th>Nome</th><th>Lunghezza</th><th>Partite giocate</th></tr>
+	  </thead>
+	  <tbody>
+	    {% for giocatore in giocatori %}
+	    <tr>
+	      <td>{{ giocatore.nome }}</td>
+	      <td>{{ giocatore.lunghezza }}</td>
+	      <td>{{ giocatore.npartite }}</td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
       </div>
     </div>
 
