@@ -54,7 +54,7 @@ def signage(request):
         'nome' : giocatore.get_full_name() ,
         'lunghezza' : get_user_lunghezza(giocatore),
         'npartite' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).count(),
-        'ngare' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).aggregate(Sum('gare')),
+        'ngare' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).aggregate(Sum('gare'))['gare__sum'],
         } for giocatore in giocatoriraw ]
     for giocatore in giocatori:
         giocatore['media'] = float(giocatore['lunghezza'])/max(1,giocatore['ngare'])
