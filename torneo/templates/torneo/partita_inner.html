@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-	<h4>{{ partita.squadra1.giocatore1 }}</h4>
+	<h4>{{ partita.squadra1.giocatore1.get_full_name }}</h4>
       </div>
       <div class="col-md-2">
 	{{ partita.punteggio11 }}
@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-	<h4>{{ partita.squadra1.giocatore2 }}</h4>
+	<h4>{{ partita.squadra1.giocatore2.get_full_name }}</h4>
       </div>
       <div class="col-md-2">
 	{{ partita.punteggio12 }}
@@ -31,10 +31,17 @@
       <br/>
     </div>
     <div class="row">
+      {% if partita.stato == partita.INCOGNITA %}
+      Non disputata
+      {% else %}
       {{ partita.punteggio11|add:partita.punteggio12 }} - {{ partita.punteggio21|add:partita.punteggio22 }}
+      {% endif %}
     </div>
     <div class="row">
-      {% if partita.stato != partita.DONE %}
+      ({{ partita.gare}} gare)
+    </div>
+    <div class="row">
+      {% if partita.stato == partita.ATTESA1 or partita.stato == partita.ATTESA2 %}
       Da confermare
       {% endif %}
     </div>
@@ -45,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-	<h4>{{ partita.squadra2.giocatore1 }}</h4>
+	<h4>{{ partita.squadra2.giocatore1.get_full_name }}</h4>
       </div>
       <div class="col-md-2">
 	{{ partita.punteggio21 }}
@@ -53,7 +60,7 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-	<h4>{{ partita.squadra2.giocatore2 }}</h4>
+	<h4>{{ partita.squadra2.giocatore2.get_full_name }}</h4>
       </div>
       <div class="col-md-2">
 	{{ partita.punteggio22 }}

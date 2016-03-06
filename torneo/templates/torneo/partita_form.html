@@ -15,6 +15,11 @@
       {{ form.data }}
     </div>
     {{ form.data.errors }}
+    <label for="{{ form.gare.id_for_label }}" class="col-sm-2 control-label">Gare</label>
+    <div class="col-sm-10">
+    {{ form.gare }}
+    </div>
+    {{ form.gare.errors }}
   </div>
 
   <div class="partitasquadra">
@@ -24,7 +29,7 @@
     <div class="row">
       <div class="col-sm-4">
 	<div class="row">
-	  <label for="{{ form.punteggio11.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra1.giocatore1 }}</label>
+	  <label for="{{ form.punteggio11.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra1.giocatore1.get_full_name }}</label>
 	</div>
 	<div class="row">
 	  {{ form.punteggio11.errors }}
@@ -38,7 +43,7 @@
       </div>
       <div class="col-sm-4">
 	<div class="row">
-	  <label for="{{ form.punteggio12.id_for_label }}" class="col-sm-12">{{ object.squadra1.giocatore2 }}</label>
+	  <label for="{{ form.punteggio12.id_for_label }}" class="col-sm-12">{{ object.squadra1.giocatore2.get_full_name }}</label>
 	</div>
 	<div class="row">
 	  {{ form.punteggio12.errors }}
@@ -54,7 +59,7 @@
     <div class="row">
       <div class="col-sm-4">
 	<div class="row">
-	  <label for="{{ form.punteggio21.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra2.giocatore1 }}</label>
+	  <label for="{{ form.punteggio21.id_for_label }}" class="col-sm-12 control-label">{{ object.squadra2.giocatore1.get_full_name }}</label>
 	</div>
 	<div class="row">
 	  {{ form.punteggio21.errors }}
@@ -68,7 +73,7 @@
       </div>
       <div class="col-sm-4">
 	<div class="row">
-	  <label for="{{ form.punteggio22.id_for_label }}" class="col-sm-12">{{ object.squadra2.giocatore2 }}</label>
+	  <label for="{{ form.punteggio22.id_for_label }}" class="col-sm-12">{{ object.squadra2.giocatore2.get_full_name }}</label>
 	</div>
 	<div class="row">
 	  {{ form.punteggio22.errors }}

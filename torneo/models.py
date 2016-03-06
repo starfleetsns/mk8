@@ -54,11 +54,11 @@ class Squadra(models.Model):
 
     def ripunteggia(self):
         p = 0
-        p += sum([ funzione_scala(partita.dl()) for partita in self.partite1.filter(stato=Partita.DONE).all() ])
-        p += sum([ funzione_scala(-partita.dl())for partita in self.partite2.filter(stato=Partita.DONE).all() ])
+        p += sum([ funzione_scala(partita.dl()) for partita in self.partite1.filter(stato=Partita.DONE).filter(campionato=True).all() ])
+        p += sum([ funzione_scala(-partita.dl())for partita in self.partite2.filter(stato=Partita.DONE).filter(campionato=True).all() ])
         l = 0
-        l += sum([ partita.dl() for partita in self.partite1.filter(stato=Partita.DONE).all() ])
-        l -= sum([ partita.dl() for partita in self.partite2.filter(stato=Partita.DONE).all() ])
+        l += sum([ partita.dl() for partita in self.partite1.filter(stato=Partita.DONE).filter(campionato=True).all() ])
+        l -= sum([ partita.dl() for partita in self.partite2.filter(stato=Partita.DONE).filter(campionato=True).all() ])
         self.punteggio = p
         self.lunghezza = l
         self.save()
@@ -91,6 +91,8 @@ class Partita(models.Model):
                              default = INCOGNITA)
 
     data = models.DateField()
+    campionato = models.BooleanField(default=True,verbose_name="Partita di campionato")
+    gare = models.IntegerField(verbose_name="Numero di gare disputate")
 
     def __str__(self):
         return self.squadra1.nome + ' Vs ' +self.squadra2.nome + '  (' + str(self.data) + ')'

@@ -7,9 +7,9 @@ from django.contrib import messages
 # Register your models here.
 
 class PartitaAdmin(admin.ModelAdmin):
-    fields = ['data','squadra1','squadra2','punteggio11','punteggio12','punteggio21','punteggio22','stato']
-    list_display = ['data','squadra1','squadra2', 'stato']
-    list_filter = ['data','stato']
+    fields = ['data','squadra1','squadra2','punteggio11','punteggio12','punteggio21','punteggio22','stato','campionato','gare']
+    list_display = ['data','squadra1','squadra2', 'stato','campionato','gare']
+    list_filter = ['data','stato','campionato']
 
     
     def save_model(self, request, obj, form, change):

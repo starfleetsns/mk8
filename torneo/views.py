@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse
 #from django.forms import ModelForm
-from django.db.models import Q
+from django.db.models import Q,Sum
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -54,9 +54,10 @@ def signage(request):
         'nome' : giocatore.get_full_name() ,
         'lunghezza' : get_user_lunghezza(giocatore),
         'npartite' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).count(),
+        'ngare' : Partita.objects.filter(Q(squadra1__giocatore1=giocatore)|Q(squadra1__giocatore2=giocatore)|Q(squadra2__giocatore1=giocatore)|Q(squadra2__giocatore2=giocatore)).filter(stato=Partita.DONE).aggregate(Sum('gare')),
         } for giocatore in giocatoriraw ]
     for giocatore in giocatori:
-        giocatore['media'] = float(giocatore['lunghezza'])/max(1,giocatore['npartite'])
+        giocatore['media'] = float(giocatore['lunghezza'])/max(1,giocatore['ngare'])
     giocatori.sort(key=lambda g : -g['media'])
     return render(request,'torneo/signage.html',{'squadre':squadre,'giocatori':giocatori})
 
@@ -167,7 +168,7 @@ class SquadreLista(ListView):
 
 class PartiteModifica(UpdateView):
     model = Partita
-    fields = ['data','punteggio11','punteggio12','punteggio21','punteggio22']
+    fields = ['data','punteggio11','punteggio12','punteggio21','punteggio22','gare']
 #    form_class =  modelform_factory(Kunde, widgets={"data": SelectDateWidget })
     
     
