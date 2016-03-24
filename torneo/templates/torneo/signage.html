@@ -54,7 +54,7 @@
 	      <td>{{ giocatore.nome }}</td>
 	      <td>{{ giocatore.lunghezza }}</td>
 	      <td>{{ giocatore.npartite }}</td>
-	      <td>{{ giocatore.media }}</td>
+	      <td>{{ giocatore.media|floatformat:2 }}</td>
 	    </tr>
 	    {% endfor %}
 	  </tbody>
