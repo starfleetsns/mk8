@@ -1,0 +1,42 @@
+name: /home/trenta3/mk8/venv
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - ca-certificates=2022.6.15=ha878542_0
+  - certifi=2018.8.24=py35_1001
+  - django=1.9.6=py35_0
+  - freetype=2.6.3=1
+  - jpeg=9e=h166bdaf_2
+  - libgcc-ng=12.1.0=h8d9b700_16
+  - libgomp=12.1.0=h8d9b700_16
+  - libpng=1.6.37=h753d276_3
+  - libtiff=4.0.6=7
+  - libzlib=1.2.12=h166bdaf_2
+  - ncurses=5.9=10
+  - openssl=1.0.2u=h516909a_0
+  - pillow=3.2.0=py35_2
+  - pip=20.3.4=pyhd8ed1ab_0
+  - python=3.5.3=3
+  - readline=6.2=0
+  - setuptools=40.4.3=py35_0
+  - sqlite=3.13.0=1
+  - tk=8.5.19=2
+  - wheel=0.37.1=pyhd8ed1ab_0
+  - xz=5.2.5=h516909a_1
+  - zlib=1.2.12=h166bdaf_2
+  - pip:
+    - chardet==4.0.0
+    - defusedxml==0.7.1
+    - idna==2.10
+    - oauthlib==3.1.0
+    - pyjwt==1.7.1
+    - python-social-auth==0.2.21
+    - python3-openid==3.2.0
+    - requests==2.25.1
+    - requests-oauthlib==1.3.1
+    - six==1.16.0
+    - urllib3==1.26.9
+prefix: /home/trenta3/mk8/venv
