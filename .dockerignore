@@ -1,0 +1,4 @@
+venv/
+Dockerfile
+*.sqlite3
+*.db
