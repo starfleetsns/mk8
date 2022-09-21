@@ -72,3 +72,4 @@ target/
 venv/
 media/
 static/
+data/

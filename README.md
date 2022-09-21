@@ -23,6 +23,5 @@ docker run -p 5000:5000 --rm mk8
 
 ## TODO
 1. Document how to set up Google OAuth
-2. Add docker-compose file with volumes
-3. Provide mounts for db.sqlite3 and media folder
-4. Provide a kubernetes deployment
+2. Provide mounts for `data` and `media` folder
+3. Provide a kubernetes deployment

@@ -3,3 +3,4 @@ Dockerfile
 *.sqlite3
 *.db
 static/
+data/
