@@ -1,6 +1,6 @@
 venv/
 Dockerfile
+*.yml
 *.sqlite3
 *.db
-static/
 data/

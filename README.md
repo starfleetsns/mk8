@@ -21,7 +21,9 @@ docker run -p 5000:5000 --rm mk8
 # Be aware that in this way the data is saved only inside the container
 ```
 
+### Environment Variables to Set
+- `DJANGO_SECRET_KEY`: long random string which has to remain secret
+
 ## TODO
 1. Document how to set up Google OAuth
-2. Provide mounts for `data` and `media` folder
-3. Provide a kubernetes deployment
+2. Create superuser with environment variables

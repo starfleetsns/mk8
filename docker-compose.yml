@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    volumes:
+      - data:/app/data:rw
+    ports:
+      - "5000:5000"
+
+volumes:
+  data: {}
