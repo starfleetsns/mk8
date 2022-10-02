@@ -7,6 +7,9 @@ from django.db.models import Q
 # Create your models here.
 
 class PreferenzeUtente(models.Model):
+    class Meta:
+        verbose_name_plural = "PreferenzeUtenti"
+        
     user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name="preferenze")
     iscritto = models.BooleanField(default=False)
 
@@ -14,6 +17,9 @@ class PreferenzeUtente(models.Model):
         return str(self.user) + ' iscritto: '+str(self.iscritto)
 
 class DatiUtente(models.Model):
+    class Meta:
+        verbose_name_plural = "DatiUtenti"
+        
     user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name="dati")
     lunghezza = models.IntegerField(default=0)
 
@@ -41,6 +47,9 @@ def funzione_scala(dl):
         return 3
 
 class Squadra(models.Model):
+    class Meta:
+        verbose_name_plural = "Squadre"
+        
     nome = models.CharField(max_length=200,verbose_name="Nome della squadra")
     giocatore1 = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="Primo giocatore",related_name="squadre1")
     giocatore2 = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="Secondo giocatore",related_name="squadre2")
@@ -70,7 +79,10 @@ class Squadra(models.Model):
     def giocatori(self):
         return [self.giocatore1, self.giocatore2]
 
-class Partita(models.Model):    
+class Partita(models.Model):
+    class Meta:
+        verbose_name_plural = "Partite"
+    
     squadra1 = models.ForeignKey(Squadra,related_name="partite1",verbose_name="Prima squadra")
     squadra2 = models.ForeignKey(Squadra,related_name="partite2",verbose_name="Seconda squadra")
     punteggio11 = models.IntegerField(default=0,verbose_name="Prima squadra, primo giocatore")

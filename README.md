@@ -22,8 +22,9 @@ docker run -p 5000:5000 --rm mk8
 ```
 
 ### Environment Variables to Set
-- `DJANGO_SECRET_KEY`: long random string which has to remain secret
+- `DJANGO_SECRET_KEY`: long random string which has to remain secret, since it is used for security of django deployment.
+- `ADMIN_EMAIL` and `ADMIN_PASSWORD` to set up when `./start.sh` is first called to automatically create an admin superuser if it doesn't exist.
 
 ## TODO
 1. Document how to set up Google OAuth
-2. Create superuser with environment variables
+
